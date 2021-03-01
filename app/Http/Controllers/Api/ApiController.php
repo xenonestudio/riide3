@@ -148,4 +148,13 @@ class ApiController extends Controller
         return $array;
     }
 
+    public function promociones(){
+        $data = Categoria::with(array('productos' => function($query)
+        {
+             $query->where('productos.precio_b', "!=",null);
+        }))
+        ->get();
+        return $data;
+    }
+
 }
