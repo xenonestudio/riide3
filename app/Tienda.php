@@ -12,6 +12,11 @@ class Tienda extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function productos()
+    {
+        return $this->hasMany('App\Producto');
+    }
+
     public function categorias()
     {
         return $this->belongsToMany('App\Categoria');

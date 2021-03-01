@@ -22,3 +22,5 @@ Route::get("/categorias/{id}","Api\ApiController@tiendasPorCategoria");
 Route::get("/lo_mas_hot","Api\ApiController@loMasHot");
 Route::get("/tienda/{id}","Api\ApiController@tienda");
 Route::get("/producto/{id}","Api\ApiController@producto");
+
+Route::get("/getProducts","Api\ApiController@getProducts");

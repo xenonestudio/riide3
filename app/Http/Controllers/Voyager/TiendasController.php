@@ -321,6 +321,7 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
     // POST BR(E)AD
     public function update(Request $request, $id)
     {
+        //dd( $request );
         $slug = $this->getSlug($request);
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
@@ -446,17 +447,21 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
         $val = $this->validateBread($request->all(), $dataType->addRows)->validate();
         $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());
         //dd($request);
-        foreach($request->input("categorias") as $c){
-            $categoria_tienda = new CategoriaTienda;
-            $categoria_tienda->tienda_id = $data->id;
-            $categoria_tienda->categoria_id = $c;
-            $categoria_tienda->save();
-        }
+        
+        
 
         event(new BreadDataAdded($dataType, $data));
 
         if (!$request->has('_tagging')) {
             if (auth()->user()->can('browse', $data)) {
+                if( count($request->input("categorias")) > 0 ){
+                    foreach($request->input("categorias") as $c){
+                        $categoria_tienda = new CategoriaTienda;
+                        $categoria_tienda->tienda_id = $data->id;
+                        $categoria_tienda->categoria_id = $c;
+                        $categoria_tienda->save();
+                    }
+                }
                 $redirect = redirect()->route("voyager.{$dataType->slug}.index");
             } else {
                 $redirect = redirect()->back();

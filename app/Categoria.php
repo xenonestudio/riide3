@@ -13,4 +13,9 @@ class Categoria extends Model
     {
         return $this->belongsToMany('App\Tienda');
     }
+
+    public function productos()
+    {
+        return $this->belongsToMany('App\Producto');
+    }
 }

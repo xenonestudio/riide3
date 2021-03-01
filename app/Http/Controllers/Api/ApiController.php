@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\CategoriaTienda;
 use App\Categoria;
+use App\Tienda;
+use App\Destacado;
 
 class ApiController extends Controller
 {
@@ -123,6 +125,30 @@ class ApiController extends Controller
     public function producto($id){
         $producto = DB::table("productos")->where("id",$id)->get();
         return $producto;
+    }
+
+    public function getProducts(){
+        //return 
+        //$data = Tienda::where("id",20)->get()[0]->productos()->get();
+        //$data = Categoria::where("id",1)->get()[0]->productos()->where("destacado",0)->get();
+        $data = Destacado::all();//[0]->cartelera()->get()[0]->pancartas()->get();
+        $array = [];
+        for($x = 0 ; $x < count( $data ) ; $x++){
+            if( $data[$x]->cartelera_id != null ){
+                $array[] = [
+                    "type" => "banner",
+                    "data" => $data[$x]->cartelera()->get()[0]->pancartas()->get()
+                ];
+            }
+            if( $data[$x]->categoria_id != null ){
+                $array[] = [
+                    "tipo" => "categoria",
+                    "categoria" => $data[$x]->categoria()->get()[0]->categoria,
+                    "data" => $data[$x]->categoria()->get()[0]->productos()->where("destacado",1)->get()//cartelera()->get()[0]->pancartas()->get()
+                ];
+            }
+        }
+        return $array;
     }
 
 }
