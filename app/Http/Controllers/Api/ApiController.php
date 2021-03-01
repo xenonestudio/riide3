@@ -202,7 +202,7 @@ class ApiController extends Controller
             }
 
             $arrayData[] = [
-                "producto_id" => $d->product_id,
+                "producto_id" => $d->producto_id,
                 "producto" => $d->producto,
                 "descripcion" => $d->descripcion,
                 "precio_a" => $d->precio_a,
