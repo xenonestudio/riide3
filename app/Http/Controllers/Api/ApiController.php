@@ -87,30 +87,27 @@ class ApiController extends Controller
     }
 
     public function loMasHot(){
-        $sliders = DB::table("carteleras")
-            ->where("pantalla_id",4)
-            ->get();
-        $allSliders = [];
-        foreach( $sliders as $s ){
-            $banners = DB::table("cartelera_pancarta")
-                ->select(
-                    "pancartas.id as id",
-                    "pancartas.titulo as titulo",
-                    "pancartas.pancarta as pancarta"
-                )
-                ->where("cartelera_pancarta.cartelera_id",$s->id)
-                ->join("pancartas","pancartas.id","=","cartelera_pancarta.pancarta_id")
-                ->get();
-            $allSliders = [
-                $banners
-            ];
-            //return $banners;
+        //return 
+        //$data = Tienda::where("id",20)->get()[0]->productos()->get();
+        //$data = Categoria::where("id",1)->get()[0]->productos()->where("destacado",0)->get();
+        $data = Destacado::all();//[0]->cartelera()->get()[0]->pancartas()->get();
+        $array = [];
+        for($x = 0 ; $x < count( $data ) ; $x++){
+            if( $data[$x]->cartelera_id != null ){
+                $array[] = [
+                    "type" => "banner",
+                    "data" => $data[$x]->cartelera()->get()[0]->pancartas()->get()
+                ];
+            }
+            if( $data[$x]->categoria_id != null ){
+                $array[] = [
+                    "tipo" => "categoria",
+                    "categoria" => $data[$x]->categoria()->get()[0]->categoria,
+                    "data" => $data[$x]->categoria()->get()[0]->productos()->where("destacado",1)->get()//cartelera()->get()[0]->pancartas()->get()
+                ];
+            }
         }
-
-
-       
-
-        return $allSliders;
+        return $array;
     }
 
     public function tienda($id){
