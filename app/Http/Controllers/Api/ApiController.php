@@ -9,6 +9,10 @@ use App\CategoriaTienda;
 use App\Categoria;
 use App\Tienda;
 use App\Destacado;
+use App\Producto;
+use App\Horario;
+use App\Calificacione;
+
 
 class ApiController extends Controller
 {
@@ -155,6 +159,74 @@ class ApiController extends Controller
         }))
         ->get();
         return $data;
+    }
+
+    public function search($search){
+        $search = implode(" ", explode(",",$search) );
+        //dd($search);
+        $data = Producto::where("producto","like","%$search%")
+            ->selectRaw(
+                "productos.id as producto_id,
+                productos.producto,
+                productos.descripcion,
+                productos.precio_a,
+                productos.precio_b,
+                productos.imagen as producto_imagen,
+                productos.cantidad,
+                tiendas.id as tienda_id,
+                tiendas.tienda as tienda,
+                tiendas.imagen as tienda_imagen
+                "
+            )
+            ->join("tiendas","tiendas.id","=","productos.tienda_id")
+            //->leftJoin("calificaciones","calificaciones.tienda_id","=","tiendas.id")
+            ->orderBy("tiendas.id")
+            ->get();
+        $arrayData = [];
+        foreach($data as $d){
+            $time = Horario::where("tienda_id",$d->tienda_id)->where("numero",date("N"))->get();
+            //dd( $time[0]->inicio);
+            $total = Calificacione::where("tienda_id",$d->tienda_id)->sum("calificacion");
+            $cantidad = Calificacione::where("tienda_id",$d->tienda_id)->count();
+
+            $start = null;
+            $end = null;
+            if(count($time) > 0){
+                $start = $time[0]->inicio;
+                $end = $time[0]->fin;
+            }
+
+            if( $cantidad == 0 ){
+                $total = 0;
+                $cantidad = 1;
+            }
+
+            $arrayData[] = [
+                "producto_id" => $d->product_id,
+                "producto" => $d->producto,
+                "descripcion" => $d->descripcion,
+                "precio_a" => $d->precio_a,
+                "precio_b" => $d->precio_b,
+                "cantidad" => $d->cantidad,
+                "tienda_id" => $d->tienda_id,
+                "tienda" => $d->tienda,
+                "tienda_imagen" => $d->tienda_imagen,
+                "hora_incio" => $start,
+                "hora_fin" => $end,
+                "calificacion" => $total / $cantidad
+            ];
+            //dd( $time,$total ,$cantidad,$d->tienda_id);
+        }
+
+        return $arrayData;
+        /*$categorias = Categoria::where("categoria","like","%$search%")
+            ->with(array('tiendas' => function($query)
+            {
+                 //dd("hola",$search);
+                 $query->where("tiendas.tienda","like","%$search%");
+            }))->get();
+        $productos = Producto::where("producto","like","%$search%")->get();
+        return [$categorias,$productos];*/
     }
 
 }
