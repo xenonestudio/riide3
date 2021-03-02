@@ -39,8 +39,6 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
     public function __construct()
     {
         $this->middleware("producto", ['only' => [
-            'crete',
-            'store',
             'edit',
             'update',
             'destroy'

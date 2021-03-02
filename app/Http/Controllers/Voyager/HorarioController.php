@@ -37,8 +37,6 @@ class HorarioController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
     public function __construct()
     {
         $this->middleware("horario", ['only' => [
-            'crete',
-            'store',
             'edit',
             'update',
             'destroy'

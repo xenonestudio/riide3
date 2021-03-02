@@ -40,8 +40,6 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
     public function __construct()
     {
         $this->middleware("store", ['only' => [
-            'crete',
-            'store',
             'edit',
             'update'
         ]]);
