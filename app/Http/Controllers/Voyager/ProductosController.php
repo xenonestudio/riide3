@@ -19,6 +19,7 @@ use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
 use App\CategoriaProducto;
 use App\Producto;
+use App\Tienda;
 
 class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController 
 {
@@ -35,6 +36,17 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
     //      Browse our Data Type (B)READ
     //
     //****************************************
+    public function __construct()
+    {
+        $this->middleware("producto", ['only' => [
+            'crete',
+            'store',
+            'edit',
+            'update',
+            'destroy'
+        ]]);
+    }
+
 
     public function index(Request $request)
     {
@@ -167,6 +179,14 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
         if (view()->exists("voyager::$slug.browse")) {
             $view = "voyager::$slug.browse";
         }
+
+        //dataTypeContent
+        if( \Auth::user()->role_id == 3 ){
+            if( \Auth::user()->tienda()->count() > 0 ){
+                $dataTypeContent = \Auth::user()->tienda()->get()[0]->productos()->get();
+            }
+        }
+
 
         return Voyager::view($view, compact(
             'actions',
@@ -410,7 +430,6 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
         }
 
         $categorias = \Auth::user()->tienda()->get()[0]->categorias()->get();
-        //dd( $categorias );
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','categorias'));
     }
@@ -447,6 +466,13 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
 
         if (!$request->has('_tagging')) {
             if (auth()->user()->can('browse', $data)) {
+                if(\Auth::user()->tienda()->count() == 1 ){
+                    $tienda = Producto::find($data->id);
+                    $tienda->tienda_id = \Auth::user()->tienda()->get()[0]->id;
+                    $tienda->save();
+                }
+                
+
                 $redirect = redirect()->route("voyager.{$dataType->slug}.index");
             } else {
                 $redirect = redirect()->back();

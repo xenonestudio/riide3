@@ -21,4 +21,14 @@ class Tienda extends Model
     {
         return $this->belongsToMany('App\Categoria');
     }
+
+    public function horario()
+    {
+        return $this->hasMany('App\Horario');
+    }
+
+    public function pancartas()
+    {
+        return $this->hasMany('App\Pancarta');
+    }
 }

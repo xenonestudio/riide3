@@ -3,7 +3,6 @@
 //namespace TCG\Voyager\Http\Controllers;
 namespace App\Http\Controllers\Voyager;
 
-
 use Exception;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
@@ -17,12 +16,9 @@ use TCG\Voyager\Events\BreadDataUpdated;
 use TCG\Voyager\Events\BreadImagesDeleted;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
-use App\Categoria;
-use App\CategoriaTienda;
-use App\Tienda;
+use App\Pancarta;
 
-
-class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController 
+class PancartasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
 {
     use BreadRelationshipParser;
 
@@ -37,17 +33,6 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
     //      Browse our Data Type (B)READ
     //
     //****************************************
-    public function __construct()
-    {
-        $this->middleware("store", ['only' => [
-            'crete',
-            'store',
-            'edit',
-            'update'
-        ]]);
-    }
-
-
 
     public function index(Request $request)
     {
@@ -181,9 +166,12 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
             $view = "voyager::$slug.browse";
         }
 
-        if( \Auth::user()->role_id == 3 ){
-            $dataTypeContent = \Auth::user()->tienda()->get();
-        }
+        //dataTypeContent
+        if( \Auth::user()->tienda()->count() > 0 ){
+            $dataTypeContent = \Auth::user()->tienda()->get()[0]->pancartas()->get();
+        } 
+       // dd( \Auth::user()->tienda()->get()[0]->pancartas()->get() );
+
 
         return Voyager::view($view, compact(
             'actions',
@@ -322,21 +310,12 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
             $view = "voyager::$slug.edit-add";
         }
 
-        $categorias = Categoria::all();
-        
-        //dd( \Auth::user()->tienda()->get()[0]->categorias()->get() );
-        $categoria_tiendas = Tienda::find($id)->categorias()->get();
-        //dd(  );
-        //dd( $categoria_tiendas );
-
-
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','categorias','categoria_tiendas'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     // POST BR(E)AD
     public function update(Request $request, $id)
     {
-        //dd( $request );
         $slug = $this->getSlug($request);
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
@@ -362,20 +341,6 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
         $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
 
         event(new BreadDataUpdated($dataType, $data));
-
-        //dd($request);
-        CategoriaTienda::where("tienda_id",$data->id)->delete();
-
-        foreach($request->input("categorias") as $c){
-            $categoria_tienda = new CategoriaTienda;
-            $categoria_tienda->tienda_id = $data->id;
-            $categoria_tienda->categoria_id = $c;
-            $categoria_tienda->save();
-        }
-        
-
-
-
 
         if (auth()->user()->can('browse', app($dataType->model_name))) {
             $redirect = redirect()->route("voyager.{$dataType->slug}.index");
@@ -434,11 +399,7 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
             $view = "voyager::$slug.edit-add";
         }
 
-        //dd();
-        $categorias = Categoria::all();
-        //dd($categorias);
-
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','categorias'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     /**
@@ -450,7 +411,6 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
      */
     public function store(Request $request)
     {
-        //dd( $request );
         $slug = $this->getSlug($request);
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
@@ -461,22 +421,18 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
         // Validate fields with ajax
         $val = $this->validateBread($request->all(), $dataType->addRows)->validate();
         $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());
-        //dd($request);
-        
-        
 
         event(new BreadDataAdded($dataType, $data));
 
+        if( \Auth::user()->tienda()->count() > 0 ){
+            $pancarta = Pancarta::find($data->id);
+            $pancarta->tienda_id = \Auth::user()->tienda()->get()[0]->id;
+            $pancarta->save();
+            //$dataTypeContent = \Auth::user()->tienda()->get()[0]->productos()->get();
+        }
+
         if (!$request->has('_tagging')) {
             if (auth()->user()->can('browse', $data)) {
-                if( count($request->input("categorias")) > 0 ){
-                    foreach($request->input("categorias") as $c){
-                        $categoria_tienda = new CategoriaTienda;
-                        $categoria_tienda->tienda_id = $data->id;
-                        $categoria_tienda->categoria_id = $c;
-                        $categoria_tienda->save();
-                    }
-                }
                 $redirect = redirect()->route("voyager.{$dataType->slug}.index");
             } else {
                 $redirect = redirect()->back();

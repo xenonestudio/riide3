@@ -7,27 +7,6 @@
 
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style>
-        .banner1,.banner2 {
-            height: 500px ;
-        }
-        .banner1 > .box-image {
-            position: relative ;
-            float: left ;
-            width: 33% ;
-            height: 150px ;
-            padding: 10px ;
-            box-sizing: border-box ;
-        }
-        .banner2 > .box-image {
-            position: reltive ;
-            float: left ;
-            width: 100% ;
-            height: 150px ;
-            padding: 10px ;
-            box-sizing: border-box ;
-        }
-    </style>
 @stop
 
 @section('page_title', __('voyager::generic.'.($edit ? 'edit' : 'add')).' '.$dataType->getTranslatedAttribute('display_name_singular'))
@@ -47,7 +26,7 @@
 
                 <div class="panel panel-bordered">
                     <!-- form start -->
-                    <form id="form-banners" role="form"
+                    <form role="form"
                             class="form-edit-add"
                             action="{{ $edit ? route('voyager.'.$dataType->slug.'.update', $dataTypeContent->getKey()) : route('voyager.'.$dataType->slug.'.store') }}"
                             method="POST" enctype="multipart/form-data">
@@ -110,63 +89,7 @@
                                     @endif
                                 </div>
                             @endforeach
-                            <script src="https://cdn.jsdelivr.net/gh/RubaXa/Sortable/Sortable.min.js"></script>
-                            <div class="form-group col-md-12">
-                                <input type="hidden" id="pancartas" name="pancartas">
-                                <label class="control-label" for="name"></label>
-                                <div class="row">
-                                    <div class="col-md-9"> <h3>Pancartas Disponibles</h3> </div>
-                                    <div class="col-md-3"> <h3>Pancartas Selecciondas</h3> </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9 banner1" style="overflow-y: scroll ;" id="banner1">
-                                        @foreach( $pancartas as $p )
-                                            @php
-                                                $bool = true;
-                                            @endphp
-                                            @foreach($cartelera_pancartas as $pc)
-                                                @if(  $p->id == $pc->id )
-                                                    @php
-                                                        $bool = false;
-                                                    @endphp
-                                                @endif
-                                            @endforeach
-                                            @if($bool)
-                                            <div class="box-image" data-id="{{$p->id}}" id="pancarta{{$p->id}}">
-                                                <div class="w-100 h-100" style="height: 100% ;">
-                                                    <img src="/storage/{{ $p->pancarta }}" width="100%" height="100%" alt="">
-                                                </div>
-                                            </div>
-                                            @endif
-                                            
-                                        @endforeach
-                                        
-                                    </div>
-                                    <div class="col-md-3 banner2" style="background: #eeeeee ; overflow-y: scroll ;" id="banner2">
-                                        @foreach( $cartelera_pancartas as $p )
-                                            <div class="box-image" data-id="{{$p->id}}" id="pancarta{{$p->id}}">
-                                                <div class="w-100 h-100" style="height: 100% ;">
-                                                    <img src="/storage/{{ $p->pancarta }}" width="100%" height="100%" alt="">
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                            </div>
-                            
-                            
-                            <!--<ul class="list-group" id="demo1">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <ul class="list-group mt-4" id="demo2">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-        </ul>-->
+
                         </div><!-- panel-body -->
 
                         <div class="panel-footer">
@@ -216,9 +139,6 @@
 @stop
 
 @section('javascript')
-<script>
-
-  </script>
     <script>
         var params = {};
         var $file;
@@ -242,20 +162,6 @@
         }
 
         $('document').ready(function () {
-            Sortable.create(banner1, {
-  animation: 100,
-  group: 'list-1',
-  draggable: '.box-image',
-  handle: '.box-image',
-  sort: true,
-  filter: '.sortable-disabled',
-  chosenClass: 'active'
-});
-
-Sortable.create(banner2, {
-  group: 'list-1',
-  handle: '.box-image'
-});
             $('.toggleswitch').bootstrapToggle();
 
             //Init datepicker for date fields if data-datepicker attribute defined
@@ -303,27 +209,6 @@ Sortable.create(banner2, {
                 $('#confirm_delete_modal').modal('hide');
             });
             $('[data-toggle="tooltip"]').tooltip();
-
-            $("#form-banners").on("submit",function(e){
-                e.preventDefault();
-
-                console.log( $("#banner2").children()[0] );
-                let arrayBanners = [];
-                for( i = 0 ; i < $("#banner2").children().length ; i++ ){
-                   //console.log(  );
-                   arrayBanners.push($($("#banner2").children()[i]).attr("data-id"));
-                }
-                if( arrayBanners.length > 0 ){
-                    $("#pancartas").val(arrayBanners);
-                } else {
-                    $("#pancartas").val("");
-                }
-                
-                $("#form-banners")[0].submit();
-                //console.log("hola");
-            });
-
-
         });
     </script>
 @stop
