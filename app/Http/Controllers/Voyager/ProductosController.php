@@ -456,12 +456,16 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
 
         event(new BreadDataAdded($dataType, $data));
 
-        foreach($request->input("categorias") as $c){
-            $categoria_tienda = new CategoriaProducto;
-            $categoria_tienda->producto_id = $data->id;
-            $categoria_tienda->categoria_id = $c;
-            $categoria_tienda->save();
+        if( count($request->input("categorias")) > 0 ){
+            foreach($request->input("categorias") as $c){
+                $categoria_tienda = new CategoriaProducto;
+                $categoria_tienda->producto_id = $data->id;
+                $categoria_tienda->categoria_id = $c;
+                $categoria_tienda->save();
+            }
         }
+
+        
 
 
         if (!$request->has('_tagging')) {
