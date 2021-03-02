@@ -363,13 +363,15 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
 
 
         CategoriaProducto::where("producto_id",$data->id)->delete();
-
-        foreach($request->input("categorias") as $c){
-            $categoria_tienda = new CategoriaProducto;
-            $categoria_tienda->producto_id = $data->id;
-            $categoria_tienda->categoria_id = $c;
-            $categoria_tienda->save();
+        if( count($request->input("categorias")) > 0 ){
+            foreach($request->input("categorias") as $c){
+                $categoria_tienda = new CategoriaProducto;
+                $categoria_tienda->producto_id = $data->id;
+                $categoria_tienda->categoria_id = $c;
+                $categoria_tienda->save();
+            }
         }
+        
 
 
         if (auth()->user()->can('browse', app($dataType->model_name))) {
