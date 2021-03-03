@@ -11,4 +11,9 @@ class Producto extends Model
     {
         return $this->belongsToMany('App\Categoria');
     }
+
+    public function tienda()
+    {
+        return $this->belongsTo('App\Tienda');
+    }
 }

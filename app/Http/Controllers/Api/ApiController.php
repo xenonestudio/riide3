@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\CategoriaTienda;
 use App\Categoria;
 use App\Tienda;
@@ -12,91 +13,61 @@ use App\Destacado;
 use App\Producto;
 use App\Horario;
 use App\Calificacione;
+use App\User;
+use App\Cartelera;
 
 
 class ApiController extends Controller
 {
     public function categorias(){
+
+        $banners = Cartelera::where("pantalla_id",1)->with("pancartas")->get();
+        //return $banners;
+
         $categorias = Categoria::where("categoria_id",null)->get();
         $arrayCategorias = [];
         foreach( $categorias as $cat ){
             $arrayCategorias[] = [
                 "id" => $cat->id,
                 "categoria" => $cat->categoria,
+                "imagen" => $cat->imagen,
                 "tiendas" => CategoriaTienda::where("categoria_id",$cat->id)->count()
             ];
             
         }
-        return $arrayCategorias;
+        return [
+            "cartelera" => $banners,
+            "categorias" => $arrayCategorias
+        ];
     }
 
     public function tiendasPorCategoria($id){
-        $categorias = Categoria::where("categoria_id",$id)->get();
-        $arrayCategorias = [];
-        foreach( $categorias as $cat ){
-            $tiendas = CategoriaTienda::where("categoria_id",$cat->id)
-                ->select(
-                    "tiendas.id as tienda_id",
-                    "tiendas.tienda as tienda",
-                    "tiendas.imagen as tienda_imagen"
-                )
-                ->join("tiendas","tiendas.id","=","categoria_tienda.tienda_id")
-                ->get();
-            $nuevasTiendas = [];
-            foreach( $tiendas as $t ){
-                $horario = DB::table("horarios")
-                    ->where("tienda_id",$t->tienda_id)
-                    ->where("numero",date("N"))
-                    ->get();
-                //dd($horario);
-                $inicio = null;
-                $fin = null;
-                if( count($horario) > 0 ){
-                    $inicio = $horario[0]->inicio;
-                    $fin = $horario[0]->fin;
-                }
-
-                $total = DB::table("calificaciones")
-                    ->where("tienda_id",$t->tienda_id)
-                    ->sum("calificacion");
-                $cantidad = DB::table("calificaciones")
-                    ->where("tienda_id",$t->tienda_id)
-                    ->count();
-                
-                $calificacion = null;
-                if( $cantidad > 0 ){
-                    $calificacion = $total / $cantidad;
-                }
-                
-
-
-                $nuevasTiendas[] = [
-                    "tienda_id" => $t->tienda_id,
-                    "tienda" => $t->tienda,
-                    "tienda_imagen" => $t->tienda_imagen,
-                    "inicio" => $inicio,
-                    "fin" => $fin,
-                    "calificacion" => $calificacion
-                ];
-            }
-            //return $nuevasTiendas;
-            $arrayCategorias[] = [
-                "categoria_id" => $cat->id,
-                "categoria" => $cat->categoria,
-                "tiendas" => $nuevasTiendas
-            ];
-        }
-        return $arrayCategorias;
-        
+        $categorias = Categoria::where("categoria_id",$id)->with(array("tiendas" => function($q){
+            $q->with(array(
+                "horario" => function($qh){
+                    $qh->where("horarios.dia",date("N"));
+                },
+                "calificacion"));
+         }))->get();
+        return $categorias;
     }
 
     public function loMasHot(){
-        //return "hola";
-        //return 
-        //$data = Tienda::where("id",20)->get()[0]->productos()->get();
-        //$data = Categoria::where("id",1)->get()[0]->productos()->where("destacado",0)->get();
-        $data = Destacado::all();//[0]->cartelera()->get()[0]->pancartas()->get();
-        //return $data;
+        
+        $destacados = Destacado::with( array("categoria" =>function($query){
+            $query->with( array( "productos" => function($qp){
+                $qp->where("aceptado",1);
+            }));
+        }))
+            ->with(array("cartelera" => function($qc){
+                $qc->with("pancartas");
+            }))
+            ->get();
+        return $destacados;
+        
+        
+        /*$data = Destacado::all();//[0]->cartelera()->get()[0]->pancartas()->get();
+        //return "dfhgd";
         $array = [];
         for($x = 0 ; $x < count( $data ) ; $x++){
             //return $data[$x]->cartelera()->get();
@@ -116,122 +87,84 @@ class ApiController extends Controller
                 ];
             }
         }
-        return $array;
+        return $array;*/
     }
 
     public function tienda($id){
-        $tienda = DB::table("tiendas")->where("id",$id)->get();
-        $productos = DB::table("productos")->where("tienda_id",$id)->get();
-        return [
-            $tienda,
-            $productos
-        ];
+        $tienda = Tienda::where("id",$id)
+            ->with("productos")
+            ->get();
+        return $tienda;
+        
     }
 
     public function producto($id){
-        $producto = DB::table("productos")->where("id",$id)->get();
+        $producto = Producto::where("id",$id)
+            ->with("tienda")
+            ->get();
+
         return $producto;
     }
 
-    public function getProducts(){
-        //return 
-        //$data = Tienda::where("id",20)->get()[0]->productos()->get();
-        //$data = Categoria::where("id",1)->get()[0]->productos()->where("destacado",0)->get();
-        $data = Destacado::all();//[0]->cartelera()->get()[0]->pancartas()->get();
-        $array = [];
-        for($x = 0 ; $x < count( $data ) ; $x++){
-            if( $data[$x]->cartelera_id != null ){
-                $array[] = [
-                    "type" => "banner",
-                    "data" => $data[$x]->cartelera()->get()[0]->pancartas()->get()
-                ];
-            }
-            if( $data[$x]->categoria_id != null ){
-                $array[] = [
-                    "tipo" => "categoria",
-                    "categoria" => $data[$x]->categoria()->get()[0]->categoria,
-                    "data" => $data[$x]->categoria()->get()[0]->productos()->where("destacado",1)->get()//cartelera()->get()[0]->pancartas()->get()
-                ];
-            }
-        }
-        return $array;
-    }
+    
 
     public function promociones(){
-        $data = Categoria::with(array('productos' => function($query)
+        /*$data = Categoria::with(array('productos' => function($query)
         {
              $query->where('productos.precio_b', "!=",null);
         }))
+        ->get();*/
+
+        $banners = Cartelera::where("pantalla_id",3)->with("pancartas")->get();
+
+        $categorias = Categoria::with(array('productos' => function($query)
+        {
+             $query->where('productos.precio_b', "!=",null)->with(array("tienda" => function($q){
+                $q->with( array(
+                    "horario" => function($qh){
+                        $qh->where("horarios.dia",date("N"));
+                    },
+                    "calificacion"));
+             }));
+        }))
         ->get();
-        return $data;
+
+        return [
+            "cartelera" => $banners,
+            "categorias" => $categorias
+        ];
+        //return $categorias;
+        //return $data;
     }
 
     public function search($search){
         $search = implode(" ", explode(",",$search) );
-        //dd($search);
-        $data = Producto::where("producto","like","%$search%")
-            ->selectRaw(
-                "productos.id as producto_id,
-                productos.producto,
-                productos.descripcion,
-                productos.precio_a,
-                productos.precio_b,
-                productos.imagen as producto_imagen,
-                productos.cantidad,
-                tiendas.id as tienda_id,
-                tiendas.tienda as tienda,
-                tiendas.imagen as tienda_imagen
-                "
-            )
-            ->join("tiendas","tiendas.id","=","productos.tienda_id")
-            //->leftJoin("calificaciones","calificaciones.tienda_id","=","tiendas.id")
-            ->orderBy("tiendas.id")
+        
+        $productos = Producto::where("producto","like","%$search%")
+            ->orderBy("tienda_id")
+            ->with("tienda")
             ->get();
-        $arrayData = [];
-        foreach($data as $d){
-            $time = Horario::where("tienda_id",$d->tienda_id)->where("numero",date("N"))->get();
-            //dd( $time[0]->inicio);
-            $total = Calificacione::where("tienda_id",$d->tienda_id)->sum("calificacion");
-            $cantidad = Calificacione::where("tienda_id",$d->tienda_id)->count();
+        return $productos;
+    }
 
-            $start = null;
-            $end = null;
-            if(count($time) > 0){
-                $start = $time[0]->inicio;
-                $end = $time[0]->fin;
+    public function register(Request $request){
+        dd($request);// $request;//("avatar")->getClientOriginalName();
+        if( (int)$request->input("type") == 5 ){
+            $data = User::where("email",$request->input("email"))->count();
+            
+            if( $data == 0 ){
+                $user = new User;
+                $user->name = $request->input("name");
+                $user->email = $request->input("email");
+                $user->password = Hash::make($request->input("password"));
+                $user->phone = $request->input("phone");
+                $user->role_id = 5;
+                $user->save();
+                return [
+                    "status" => true
+                ];
             }
-
-            if( $cantidad == 0 ){
-                $total = 0;
-                $cantidad = 1;
-            }
-
-            $arrayData[] = [
-                "producto_id" => $d->producto_id,
-                "producto" => $d->producto,
-                "descripcion" => $d->descripcion,
-                "precio_a" => $d->precio_a,
-                "precio_b" => $d->precio_b,
-                "cantidad" => $d->cantidad,
-                "tienda_id" => $d->tienda_id,
-                "tienda" => $d->tienda,
-                "tienda_imagen" => $d->tienda_imagen,
-                "hora_incio" => $start,
-                "hora_fin" => $end,
-                "calificacion" => $total / $cantidad
-            ];
-            //dd( $time,$total ,$cantidad,$d->tienda_id);
         }
-
-        return $arrayData;
-        /*$categorias = Categoria::where("categoria","like","%$search%")
-            ->with(array('tiendas' => function($query)
-            {
-                 //dd("hola",$search);
-                 $query->where("tiendas.tienda","like","%$search%");
-            }))->get();
-        $productos = Producto::where("producto","like","%$search%")->get();
-        return [$categorias,$productos];*/
     }
 
 }

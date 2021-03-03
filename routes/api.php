@@ -22,11 +22,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['cors']], function () {
     //Rutas a las que se permitirá acceso
     Route::get("/categorias","Api\ApiController@categorias");
-Route::get("/categorias/{id}","Api\ApiController@tiendasPorCategoria");
-Route::get("/lo_mas_hot","Api\ApiController@loMasHot");
-Route::get("/tienda/{id}","Api\ApiController@tienda");
-Route::get("/producto/{id}","Api\ApiController@producto");
-Route::get("/getProducts","Api\ApiController@getProducts");
-Route::get("/promociones","Api\ApiController@promociones");
-Route::get("/search/{search}","Api\ApiController@search");
+    Route::get("/categorias/{id}","Api\ApiController@tiendasPorCategoria");
+    Route::get("/lo_mas_hot","Api\ApiController@loMasHot");
+    Route::get("/tienda/{id}","Api\ApiController@tienda");
+    Route::get("/producto/{id}","Api\ApiController@producto");
+    Route::get("/promociones","Api\ApiController@promociones");
+    Route::get("/search/{search}","Api\ApiController@search");
+    Route::post("/register","Api\ApiController@register");
+
 });
