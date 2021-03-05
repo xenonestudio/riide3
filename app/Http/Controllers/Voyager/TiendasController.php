@@ -547,6 +547,8 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
             }
         }
 
+        
+
         $displayName = count($ids) > 1 ? $dataType->getTranslatedAttribute('display_name_plural') : $dataType->getTranslatedAttribute('display_name_singular');
 
 

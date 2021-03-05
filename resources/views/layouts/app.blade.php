@@ -43,14 +43,7 @@
                 </div>
             </div>
             <div class="d-flex">
-                <div class="w-100 h-100 py-2 d-flex flex-column">
-                    <div class="w-80 text-center text-white">
-                        <img width="20" height="20" class="rounded-circle" src="https://startfixafrica.co.ke/wp-content/uploads/2018/08/user-sign-icon-person-symbol-human-avatar-vector-12693195-1.jpg" alt="">
-                    </div>
-                    <div class="w-20 text-center text-white" style="font-size: 8px ;">
-                        Bahimer
-                    </div>
-                </div>
+                @guest
                 <div class="w-100 h-100 py-2 d-flex flex-column">
                     <div class="w-80 text-center text-white">
                         <i class="fas fa-user-alt" style="font-size: 20px ;"></i>
@@ -59,6 +52,18 @@
                         Registrate
                     </div>
                 </div>
+                @else
+                <div class="w-100 h-100 py-2 d-flex flex-column">
+                    <div class="w-80 text-center text-white">
+                        <img width="20" height="20" class="rounded-circle" src="/storage/{{ \Auth::user()->avatar }}" alt="">
+                    </div>
+                    <div class="w-20 text-center text-white" style="font-size: 8px ;">
+                        {{ \Auth::user()->name }}
+                    </div>
+                </div>
+                @endguest
+                
+                
                 <div class="w-100 h-100 py-2 d-flex flex-column">
                     <div class="w-80 text-center text-white">
                         <i class="fas fa-wallet" style="font-size: 20px ;"></i>
@@ -90,10 +95,10 @@
                     </div>
                 </div>
                 <div class="w-100 h-100 d-flex">
-                    <div class="w-100 text-center text-white">Categorias</div>
-                    <div class="w-100 text-center text-white">Promociones</div>
-                    <div class="w-100 text-center text-white">Quiero ser un Riide</div>
-                    <div class="w-100 text-center text-white">Guia de uso</div>
+                    <a href="/categorias" class="w-100 text-center text-white">Categorias</a>
+                    <a href="/promociones" class="w-100 text-center text-white">Promociones</a>
+                    <a href="/" class="w-100 text-center text-white">Quiero ser un Riide</a>
+                    <a href="/" class="w-100 text-center text-white">Guia de uso</a>
                 </div>
             </div>
             <div class="d-flex">
