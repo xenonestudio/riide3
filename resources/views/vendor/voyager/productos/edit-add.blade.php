@@ -219,11 +219,14 @@
 
             ///////////////////////////////
             categorias = {!! $categorias !!};
-            console.log( categorias );
+            console.log( "cat = ", categorias );
             @if( $edit )
             categoria_productos = {!! $categoria_productos !!};
+            console.log("hola = ",categoria_productos);
             for( $i = 0 ; $i < categorias.length ; $i++ ){
+                console.log("aqui",categorias[$i])
                 if( categorias[$i].categoria_id == null ){
+                    
                     $("#categorias").append(`
                     <li style="list-style:none;" data-parent="null" >
                         <div class="form-check">

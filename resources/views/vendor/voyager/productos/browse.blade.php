@@ -102,6 +102,7 @@
                                         </th>
                                         @endforeach
                                         <th class="actions text-right dt-not-orderable">{{ __('voyager::generic.actions') }}</th>
+                                        <th>Destacar Producto</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -256,6 +257,16 @@
                                                     @include('voyager::bread.partials.actions', ['action' => $action])
                                                 @endif
                                             @endforeach
+                                        </td>
+                                        <td>
+                                            
+                                                @if ($data->aceptado == null)
+                                                    <a href="/admin/destacar/1/{{ $data->id }}" class="btn btn-primary">Aceptar</a>
+                                                @else
+                                                    <a href="/admin/destacar/0/{{ $data->id }}" class="btn btn-danger">Rechazar</a>
+                                                @endif
+                                                
+                                            
                                         </td>
                                     </tr>
                                     @endforeach

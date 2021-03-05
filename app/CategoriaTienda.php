@@ -14,4 +14,13 @@ class CategoriaTienda extends Model
         return $this->belongsTo('App\Categoria');
     }
 
+    public function categoria()
+    {
+        return $this->belongsTo('App\Categoria');
+    }
+
+    public function tienda()
+    {
+        return $this->belongsTo('App\Tienda');
+    }
 }

@@ -1,1 +1,396 @@
-//
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.header {
+    border-radius: 0px 0px 20px 20px;
+}
+
+
+//////////////////////////////////////////////////
+.bottom_nav_container{
+    width: 100%;
+    height: 120px;
+    position: fixed;
+    bottom: -10px;
+    display: inline-flex;
+    transition: 0.8s;
+  
+  }
+  
+  .bar_left{
+    text-align: right;
+    padding-top: 1%;
+    background: #ffffff;
+    width: auto;
+    /*height: 120px;*/
+    box-shadow: 20px -1px 18px 3px rgb(0 0 0 / 20%), 11px 6px 20px 0 rgb(0 0 0 / 19%);
+  
+  }
+  
+  .bar_center{
+    width: 210px;
+    height: 120px;
+    max-width: 210px;
+    text-align: center;
+    min-width: 150px;
+    z-index: 20;
+    transition: 0.8s;
+  }
+  
+  
+  .bar_right{
+    text-align: left;
+    padding-top: 1%;
+    background: #ffffff;
+    width: auto;
+    /*height: 120px;*/
+    box-shadow: -18px -6px 18px 3px rgb(0 0 0 / 20%), 11px 6px 20px 0 rgb(0 0 0 / 19%);
+  }
+  
+  .button_center{
+    background: #17c0d5;
+    width: 90px;
+    height: 90px;
+    position: relative;
+    top: -160%;
+    border-radius: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10%;
+    color: white;
+    transition: 0.5s;
+    font-size: 33px;
+  }
+  
+  .button_center:hover{
+    padding-top: 10%;
+    background: #ffffff;
+    border: #17c0d5;
+    border-style: solid;
+    border-width: 1px;
+    color: #17c0d5;
+    transition: 0.5s;
+  }
+  
+  .path_svg{
+      -moz-box-shadow: -5px -5px 5px #888;
+      -webkit-box-shadow: -5px -5px 5px #888;
+      box-shadow: -5px -5px 5px #888;
+  }
+  
+  .button_center_gohome{
+    background: #17c0d5 !important;
+  }
+  
+  @media only screen and (max-width: 1024px) {
+  
+    .bar_center{
+      max-width: 180px;
+      min-width: 130px;
+      transition: 0.8s;
+  
+    }
+  
+    .bottom_nav_container{
+      width: 100%;
+      height: 100px;
+      transition: 0.8s;
+    }
+  
+    .button_center{
+      top: -150%;
+      font-size: 32px  !important;
+      background: #17c0d5;
+      width: 80px;
+      height: 80px;
+      font-size: 2px;
+      transition: 0.5s;
+    }
+  
+    @media only screen and (max-width: 900px) {
+  
+      .button_center{
+        top: -140%;
+      }
+  
+    }
+  
+    @media only screen and (max-width: 400px) {
+  
+      .button_center{
+        top: -130%;
+      }
+  
+    }
+  
+  
+  }
+
+  
+  .no_icon{
+    display: none;
+  }
+  
+  .view_icon{
+    display: block;
+    display: block;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  
+  .btn-small-device{
+    min-width: 40px !important;
+  }
+  .elements_buttom{
+    display: flex;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+  }
+  
+  
+  @media only screen and (max-width: 400px) {
+  
+    .btn-small-device{
+      min-width: 37px !important;
+      height: 36px;
+    }
+  
+  }
+  
+
+  .swiper-pagination {
+      display: none !important;
+  }
+  .size-title-card {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  ///////////////////////////////////////////
+  @media (max-width: 576px) { 
+    .size-title-card {
+        font-size: 15px ;
+        
+    }
+
+    .slider-banner {
+        height: 200px ;
+    }
+
+    .card-img-cat {
+        height: 70px ;
+    }
+
+    .card-img-store {
+        height: 70px ;
+    }
+
+    .card-store {
+        width: 120px ;
+    }
+
+    .card-producto {
+      width: 120px ;
+  }
+
+    .calificacion {
+        font-size: 12px ;
+    }
+
+    #banner-store {
+        height: 200px ;
+    }
+
+    .size-cat-store {
+        font-size: 10px ;
+    }
+
+    .size-cal-store {
+        font-size: 15px !important;
+    }
+
+    .size-tienda-store {
+        font-size: 15px !important ;
+    }
+
+    .producto-name {
+      font-size: 10px !important;
+    }
+
+    .producto-price {
+      font-size: 12px !important;
+    }
+
+    .producto-icon {
+      font-size: 8px ;
+    }
+
+    .imagen-producto {
+      height: 80px ;
+    }
+
+    .producto-imagen {
+      height: 250px ;
+    }
+
+}
+
+@media (min-width: 576px) { 
+    .slider-banner {
+        height: 300px ;
+    }
+
+    .card-img-cat {
+        height: 70px ;
+    }
+
+    .card-img-store {
+        height: 100px ;
+    }
+
+    .card-store {
+        width: 150px ;
+    }
+
+    .card-producto {
+      width: 150px ;
+  }
+
+    #banner-store {
+        height: 250px ;
+    }
+
+    .imagen-producto {
+      height: 100px ;
+    }
+
+    .producto-imagen {
+      height: 250px ;
+    }
+
+    .producto-name {
+      font-size: 12px ;
+    }
+    .producto-price {
+      font-size: 12px ;
+    }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    .size-title-card {
+        font-size: 22px ;
+    }
+    .slider-banner {
+        height: 325px ;
+    }
+
+    .card-img-cat {
+        height: 100px ;
+    }
+
+    .card-img-store {
+        height: 120px ;
+    }
+
+    .card-producto {
+      width: 180px ;
+  }
+
+    .card-store {
+        width: 150px ;
+    }
+
+    #banner-store {
+        height: 300px ;
+    }
+    
+    .producto-name {
+      font-size: 14px !important;
+    }
+
+    .producto-price {
+      font-size: 16px !important;
+    }
+
+    .imagen-producto {
+      height: 100px ;
+    }
+
+    .producto-imagen {
+      height: 280px ;
+    }
+
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .slider-banner {
+        height: 350px ;
+    }
+
+    .card-img-cat {
+        height: 180px ;
+    }
+
+    #banner-store {
+        height: 350px ;
+    }
+
+    .producto-name {
+      font-size: 18px !important;
+    }
+
+    .producto-icon {
+      font-size: 14px;
+    }
+
+    .imagen-producto {
+      height: 150px ;
+    }
+
+    .producto-imagen {
+      height: 320px ;
+    }
+
+    .card-producto {
+      width: 180px ;
+  }
+
+ }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    .slider-banner {
+        height: 450px ;
+    }
+
+    #banner-store {
+        height: 400px ;
+    }
+ }
+  ///////////////////////////////////////////

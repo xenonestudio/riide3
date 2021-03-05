@@ -90,30 +90,7 @@
                                 </div>
                             @endforeach
 
-                            @if( !$edit )
-                            <div class="form-group col-md-12">
-                                <label class="control-label w-100">Usuario</label> <br>
-                                <select class="js-example-basic-single w-100" name="user_id">
-                                    @foreach ($users as $u)
-                                        <option value="{{ $u->id }}">{{ $u->name }}</option>
-                                    @endforeach
-                                    
-                                  </select>
-                            </div>
-                            @endif
-
-                            
-
-                            <div class="form-group col-md-12">
-                                <label class="control-label">Categorias</label>
-                                <ul style="padding-left: 0px ;" id="categorias"></ul>
-                            </div>
-
-
                         </div><!-- panel-body -->
-
-                        
-
 
                         <div class="panel-footer">
                             @section('submit-buttons')
@@ -185,7 +162,6 @@
         }
 
         $('document').ready(function () {
-            $('.js-example-basic-single').select2();
             $('.toggleswitch').bootstrapToggle();
 
             //Init datepicker for date fields if data-datepicker attribute defined
@@ -233,94 +209,6 @@
                 $('#confirm_delete_modal').modal('hide');
             });
             $('[data-toggle="tooltip"]').tooltip();
-
-            ///////////////////////////////
-            categorias = {!! $categorias !!};
-            console.log( categorias );
-            @if( $edit )
-            categoria_tiendas = {!! $categoria_tiendas !!};
-            for( $i = 0 ; $i < categorias.length ; $i++ ){
-                if( categorias[$i].categoria_id == null ){
-                    $("#categorias").append(`
-                    <li style="list-style:none;" data-parent="null" >
-                        <div class="form-check">
-                            <input name="categorias[]" value="${categorias[$i].id}" onChange="checkCategoria(this)" type="checkbox" class="form-check-input check-categoria" data-id="${categorias[$i].id}" id="categoria${categorias[$i].id}">
-                            <label class="form-check-label" for="categoria${categorias[$i].id}">${categorias[$i].categoria}</label>
-                        </div>
-                        <ul id="lista-categoria${categorias[$i].id}"></ul>
-                    </li>`);
-                }
-            }
-            console.log("categorias = ",categoria_tiendas);
-            for( j = 0 ; j < categoria_tiendas.length ; j++ ){
-                console.log("categorias = ",categoria_tiendas[j]);
-                if( $(`#categoria${categoria_tiendas[j].id}`).checked ){
-                    console.log(true)
-                } else {
-                    $(`#categoria${categoria_tiendas[j].id}`).prop("checked", true);
-                    for( i = 0 ; i < categorias.length ; i++ ){
-                        
-                        if(categorias[i].categoria_id == categoria_tiendas[j].id ){
-                            console.log("aquiii",`#lista-categoria${categoria_tiendas[j].id}`)
-                            $(`#lista-categoria${categoria_tiendas[j].id}`).append(`
-                            <li style="list-style:none;" data-parent="null" >
-                                <div class="form-check">
-                                    <input name="categorias[]" value="${categorias[i].id}" onChange="checkCategoria(this)" type="checkbox" class="form-check-input check-categoria" data-id="${categorias[i].id}" id="categoria${categorias[i].id}">
-                                    <label class="form-check-label" for="categoria${categorias[i].id}">${categorias[i].categoria}</label>
-                                </div>
-                                <ul id="lista-categoria${categorias[i].id}"></ul>
-                            </li>
-                            `);
-                        }
-                    }
-                }
-            }
-
-               
-            @else
-            for( $i = 0 ; $i < categorias.length ; $i++ ){
-                console.log(categorias[$i].categoria_id);
-                if( categorias[$i].categoria_id == null ){
-                    $("#categorias").append(`
-                    <li style="list-style:none;" data-parent="null" >
-                        <div class="form-check">
-                            <input name="categorias[]" value="${categorias[$i].id}" onChange="checkCategoria(this)" type="checkbox" class="form-check-input check-categoria" data-id="${categorias[$i].id}" id="categoria${categorias[$i].id}">
-                            <label class="form-check-label" for="categoria${categorias[$i].id}">${categorias[$i].categoria}</label>
-                        </div>
-                        <ul id="lista-categoria${categorias[$i].id}"></ul>
-                    </li>`);
-                }
-            }
-            @endif
-            
-            ///////////////////////////////
-
         });
-
-        
-        function checkCategoria(e){
-                for( i = 0 ; i < categorias.length ; i++ ){
-                    if(categorias[i].categoria_id == parseInt( $(e).attr("data-id") ) ){
-                        
-                        if(e.checked) {
-                            $(`#lista-categoria${categorias[i].categoria_id}`).append(`
-                            <li style="list-style:none;" data-parent="null" >
-                                <div class="form-check">
-                                    <input name="categorias[]" value="${categorias[i].id}" name="categorias[]" onChange="checkCategoria(this)" type="checkbox" class="form-check-input check-categoria" data-id="${categorias[i].id}" id="categoria${categorias[i].id}">
-                                    <label class="form-check-label" for="categoria${categorias[i].id}">${categorias[i].categoria}</label>
-                                </div>
-                                <ul id="lista-categoria${categorias[i].id}"></ul>
-                            </li>
-                            `);
-                        } else {
-                            $(`#lista-categoria${categorias[i].categoria_id}`).empty();
-                        }
-
-                        
-                    }
-                }
-            }
-
-        
     </script>
 @stop

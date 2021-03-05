@@ -110,6 +110,7 @@
                                     @endif
                                 </div>
                             @endforeach
+                            @if($edit)
                             <script src="https://cdn.jsdelivr.net/gh/RubaXa/Sortable/Sortable.min.js"></script>
                             <div class="form-group col-md-12">
                                 <input type="hidden" id="pancartas" name="pancartas">
@@ -152,7 +153,7 @@
                                         @endforeach
                                     </div>
                             </div>
-                            
+                            @endif
                             
                             <!--<ul class="list-group" id="demo1">
           <li class="list-group-item">Cras justo odio</li>

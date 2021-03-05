@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'store' => \App\Http\Middleware\StoreMiddleware::class,
         'producto' => \App\Http\Middleware\Productos::class,
         'horario' => \App\Http\Middleware\Horarios::class,
+        'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
     ];
 
     /**

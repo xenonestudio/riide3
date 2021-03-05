@@ -323,9 +323,19 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
             $view = "voyager::$slug.edit-add";
         }
 
-        $categorias = \Auth::user()->tienda()->get()[0]->categorias()->get();
+        //$categorias = Product::where("")->get();
 
+        //$cat = Tienda::where("id",17)->with("categorias")->get();
+        //dd($cat);
+        //$categorias = \Auth::user()->tienda()->get()[0]->categorias()->get();//[0]->categorias()->get();
+        //dd( $categorias );
+       // $categorias = Producto::find($id);
+        ///dd("hola",$categorias);
+        //$categoria_productos = Producto::find($id)->categorias()->get();
+
+        $categorias = \Auth::user()->tienda()->get()[0]->categorias()->get();//[0]->categorias()->get();
         $categoria_productos = Producto::find($id)->categorias()->get();
+        //dd( $categorias ,$categoria_productos);
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','categorias','categoria_productos'));
     }
@@ -333,6 +343,7 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
     // POST BR(E)AD
     public function update(Request $request, $id)
     {
+        //dd(  );
         $slug = $this->getSlug($request);
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();

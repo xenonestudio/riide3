@@ -19,6 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+    /*AÑADE AQUI LAS RUTAS QUE QUIERAS PROTEGER CON JWT*/
+});
+
 Route::group(['middleware' => ['cors']], function () {
     //Rutas a las que se permitirá acceso
     Route::get("/categorias","Api\ApiController@categorias");
@@ -28,6 +34,9 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get("/producto/{id}","Api\ApiController@producto");
     Route::get("/promociones","Api\ApiController@promociones");
     Route::get("/search/{search}","Api\ApiController@search");
-    Route::post("/register","Api\ApiController@register");
+    //Route::post("/register","Api\ApiController@register");
+    Route::post('register', 'Api\ApiController@register');
+    Route::post('login', 'Api\ApiController@authenticate');
 
+    Route::post('a', 'Api\ApiController@a');
 });
