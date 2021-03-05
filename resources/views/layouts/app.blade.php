@@ -21,8 +21,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/tab.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/btns.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://use.fontawesome.com/f1ee4d2df9.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         
@@ -181,6 +184,118 @@
             @yield('content')
         </main>
 
+
+
+
+
+
+
+
+
+
+        <div *ngIf="type" style="z-index: 1000000 ;" #bottomnav class="bottom_nav_container d-flex d-md-none">
+
+            <div class="bar_left">
+        
+              <button type="submit" class="btn riide-btn btn-small-device">
+                <div class="elements_buttom">
+                  <div>
+                    
+                  </div>
+                  <div class="text-muted">
+                    <i class='fas fa-percent' style='font-size:15px'></i>
+                  </div>
+                  <div>
+                    <div class="svg_img"></div>
+                  </div>
+                </div>
+              
+              </button>
+        
+              <button type="submit" class="btn riide-btn btn-small-device">
+                <div class="elements_buttom">
+                  <div>
+                    
+                  </div>
+                  <div class="text-muted">
+                    <i class='fas fa-wallet' style='font-size:15px'></i>
+                  </div>
+                  <div>
+                    <div class="svg_img"></div>
+                  </div>
+                </div>
+              
+              </button>
+        
+        
+            </div>
+            <div class="bar_center">
+            
+            
+              <svg version="1.1" id="Color_Fill_1_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+               y="0px" width="100%"  viewBox="0 29.81 120 90.19" enable-background="new 0 29.81 120 90.19"
+               xml:space="preserve">
+            <g id="Color_Fill_1">
+              <g>
+                <path class="path_svg" fill="#FFFFFF" d="M104,41c-5.973,13.627-9.779,36.127-44,36c-34.036-0.126-38.852-20.487-44-36
+                  C11.935,28.75,0,29.834,0,29.834V120h120V29.834C120,29.834,109.368,28.75,104,41z"/>
+              </g>
+            </g>
+            </svg>
+            
+            <div id="btncenter" class="button_center">
+              <i class='fas fa-store-alt' style='font-size:27px'></i>
+            </div>
+            
+            
+            </div>
+            <div class="bar_right">
+        
+        
+              <button type="submit" class="btn riide-btn btn-small-device">
+                <div class="elements_buttom">
+                  <div>
+                    
+                  </div>
+                  <div class="text-muted">
+                    <i class='fas fa-th-large' style='font-size:15px'></i>
+                  </div>
+                  <div>
+                    <div class="svg_img"></div>
+                  </div>
+                </div>
+              
+              </button>
+        
+              <button type="submit" class="btn riide-btn btn-small-device">
+                <div class="elements_buttom">
+                  <div>
+                    
+                  </div>
+                  <div class="text-muted">
+                    <i class='fas fa-bars' style='font-size:20px'></i>
+                  </div>
+                  <div>
+                    <div class="svg_img"></div>
+                  </div>
+                </div>
+              
+              </button>
+        
+            </div>
+            
+          </div>
+
+
+
+
+
+
+
+
+
+
+        <!--
         <div class="fixed-bottom w-100 d-flex d-md-none" style="height: 60px ;box-shadow: 10px 5px 5px black;
         ">
             <div class="w-100 bg-white d-flex">
@@ -216,7 +331,7 @@
                     <div class="h-100 text-center">sdgsdg</div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 <!--
 

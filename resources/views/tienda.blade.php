@@ -11,7 +11,6 @@
             <div class="w-100 d-flex">
                 <h4 class="pl-3 pb-0 mb-0 d-flex align-items-center text-white size-tienda-store">Mc Donals</h4>
                 <div class="ml-3 d-flex">
-
                     @if( count( $tienda->horario ) > 0)
                             <script>
                                 start = "{{ $tienda->horario[0]->inicio }}";
@@ -36,10 +35,12 @@
             </div>
             <div class="h-100 d-flex">
                 <div class="pl-3" style="width: 80px ;">
-                    <span class="text-primary size-cal-store" style="font-size: 20px ;"><i class="fa fa-star"></i> {{ $tienda->calificacion[0]->calificacion }}</span> 
+                  @if (count($tienda->calificacion) > 0)
+                  <span class="text-primary size-cal-store" style="font-size: 20px ;"><i class="fa fa-star"></i> {{ $tienda->calificacion[0]->calificacion }}</span> 
+                  @endif   
                 </div>
                 <div class="pt-1">
-                    @for ($i = 0; $i < count( $tienda->categorias ); $i++)
+                    @for ($i = 0; $i < count( $tienda->categorias ) ; $i++)
                         <div class="d-flex align-items-center text-white size-cat-store" style="height: auto ; width: auto ;position: relative ;float: left ;">
                             @if ( $i > 0 )<i class="fas fa-circle text-white px-2" style="font-size: 5px ;"></i>@endif {{ $tienda->categorias[$i]->categoria }}
                         </div>

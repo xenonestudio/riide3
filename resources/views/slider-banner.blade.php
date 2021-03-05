@@ -28,10 +28,12 @@
     }
   </style>
   <!-- Swiper -->
+
+  @if( count($cartelera) > 0 )
   <div class="swiper-container slider-banner">
     <div class="swiper-wrapper">
         @foreach($cartelera[0]["pancartas"] as $c)
-        <div class="swiper-slide" style="background-image: url('/storage/{{ $c->pancarta }}') ;background-position: center;background-size: cover;"></div>
+        <a href="{{ $c->enlace }}" class="swiper-slide" style="background-image: url('/storage/{{ $c->pancarta }}') ;background-position: center;background-size: cover;"></a>
         @endforeach
       
       <!--<div class="swiper-slide" style="background-image: url('https://venngage-wordpress.s3.amazonaws.com/uploads/2020/04/Curves-Twitch-Banner-Template.png') ;background-position: center;background-size: cover;"></div>
@@ -41,6 +43,9 @@
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
+  @endif
+
+  
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 

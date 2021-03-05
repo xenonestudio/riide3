@@ -1,0 +1,32 @@
+.no_icon{
+    display: none;
+  }
+  
+  .view_icon{
+    display: block;
+    margin-left: 4px;
+    margin-right: 4px;
+    height: fit-content;
+  }
+  
+  .btn-small-device{
+    min-width: 40px !important;
+  }
+  .elements_buttom{
+    display: flex;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+  }
+  
+  
+  @media only screen and (max-width: 400px) {
+  
+    .btn-small-device{
+      min-width: 37px !important;
+      height: 36px;
+    }
+  
+  }
+  

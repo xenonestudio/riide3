@@ -42,7 +42,7 @@ class CategoriasController extends Controller
     }
 
     public function subcategorias($id){
-        $banners = Cartelera::where("pantalla_id",1)->with("pancartas")->get();
+        $banners = Cartelera::where("pantalla_id",2)->with("pancartas")->get();
         $cartelera = $banners;
         $categorias = Categoria::where("categoria_id",$id)->with(array("tiendas" => function($q){
             $q->with(array(
@@ -51,6 +51,9 @@ class CategoriasController extends Controller
                 },
                 "calificacion"));
          }))->get();
+
+         
+
         return view("subcategorias",compact("cartelera","categorias"));
     }
 
@@ -64,6 +67,7 @@ class CategoriasController extends Controller
             }])
             ->get();
         $tienda = $tienda[0];
+        //dd($tienda);
         //return $tienda;
         return view("tienda",compact("tienda"));
     }

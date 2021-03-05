@@ -1,5 +1,5 @@
 <a href="/producto/{{ $p->id }}" class="card p-1 w-100" style="text-decoration: none !important; color: black ;">
-    <div class="w-100 imagen-producto" style="background-image: url('https://venngage-wordpress.s3.amazonaws.com/uploads/2020/04/Curves-Twitch-Banner-Template.png') ;background-position: center;background-size: cover;"></div>
+    <div class="w-100 imagen-producto" style="background-image: url('/storage/{{ $p->imagen }}') ;background-position: center;background-size: cover;"></div>
     <div class="card-body p-1">
       <div class="w-100 d-flex justify-content-between">
           <div class="producto-name">

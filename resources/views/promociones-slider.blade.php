@@ -57,7 +57,7 @@
                 <div class="card-body p-0">
                   <p class="card-text text-center size-title-card mb-0 text-muted"></p>
                   <div class="w-100 d-flex">
-                      <div class="w-100 text-left text-dark" style="font-size: 8px !important;">
+                      <div class="w-100 text-left text-dark" style="font-size: 12px !important;">
                         {{ $p->producto }}
                       </div>
                       <div class="w-100 text-right " style="font-size: 10px !important;">
@@ -70,11 +70,11 @@
                       </div>
                   </div>
                   <div class="w-100 d-flex">
-                    <div class="w-100 text-left" style="font-size: 6px !important;">
+                    <div class="w-100 text-left" style="font-size: 12px !important;">
                      <b>{{ $p->tienda->tienda }}</b> 
                     </div>
                     <div class="w-100 text-right " style="font-size: 10px !important;">
-                     <b>{{ $p->precio_b }}</b> 
+                     <b class="text-dark">{{ $p->precio_b }}</b> 
                     </div>
                   </div>
                   <div class="w-100 d-flex mt-3 justify-content-center">

@@ -37,7 +37,7 @@
         @foreach ($c->tiendas as $t)
         <div class="swiper-slide card-store mr-3" style="background: transparent">
             <a href="/tienda/{{ $t->id }}" class="card w-100 mt-2 p-2" style="text-decoration: none">
-                <div class="w-100 card-img-store" style="background-image: url('https://venngage-wordpress.s3.amazonaws.com/uploads/2020/04/Curves-Twitch-Banner-Template.png') ;background-position: center;background-size: cover;"></div>
+                <div class="w-100 card-img-store" style="background-image: url('/storage/{{ $t->imagen }}') ;background-position: center;background-size: cover;"></div>
                 <div class="card-body p-0">
                   <p class="card-text text-center size-title-card mb-0 text-muted">{{ $t->tienda }}</p>
                   <div class="w-100 d-flex">

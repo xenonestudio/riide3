@@ -551,8 +551,11 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
 
 
         $user = User::find( $data->user_id );
-                $user->tienda = null;
-                $user->save();
+        if($user){
+            $user->tienda = null;
+            $user->save();
+        }
+        
 
         $res = $data->destroy($ids);
         $data = $res
