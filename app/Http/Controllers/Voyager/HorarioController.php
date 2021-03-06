@@ -177,7 +177,14 @@ class HorarioController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
 
         //dd( \Auth::user()->tienda()->get()[0]->horario()->get() );
 
-        $dataTypeContent = \Auth::user()->tienda()->get()[0]->horario()->get();
+        
+        //dd( $dataTypeContent );
+        if( count(\Auth::user()->tienda()->get()) > 0){
+            $dataTypeContent = \Auth::user()->tienda()->get()[0]->horario()->get();
+        } else {
+            return redirect("/admin/tiendas");
+        }
+
 
         return Voyager::view($view, compact(
             'actions',

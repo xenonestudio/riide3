@@ -83,6 +83,9 @@
                                                 <input type="checkbox" class="select_all">
                                             </th>
                                         @endif
+                                        @if( \Auth::user()->role_id == 1 || \Auth::user()->role_id == 2 )
+                                            <th>Destacar Producto</th>
+                                        @endif
                                         @foreach($dataType->browseRows as $row)
                                         <th>
                                             @if ($isServerSide && $row->type !== 'relationship')
@@ -102,7 +105,8 @@
                                         </th>
                                         @endforeach
                                         <th class="actions text-right dt-not-orderable">{{ __('voyager::generic.actions') }}</th>
-                                        <th>Destacar Producto</th>
+                                        
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -112,6 +116,17 @@
                                             <td>
                                                 <input type="checkbox" name="row_id" id="checkbox_{{ $data->getKey() }}" value="{{ $data->getKey() }}">
                                             </td>
+                                        @endif
+                                        @if( \Auth::user()->role_id == 1 || \Auth::user()->role_id == 2 )
+                                        <td>
+                                            @if( $data->destacado == 1 )
+                                                @if ($data->aceptado == null)
+                                                    <a href="/admin/destacar/1/{{ $data->id }}" class="btn btn-primary">Aceptar</a>
+                                                @else
+                                                    <a href="/admin/destacar/0/{{ $data->id }}" class="btn btn-danger">Rechazar</a>
+                                                @endif
+                                            @endif
+                                        </td>
                                         @endif
                                         @foreach($dataType->browseRows as $row)
                                             @php
@@ -258,16 +273,8 @@
                                                 @endif
                                             @endforeach
                                         </td>
-                                        <td>
-                                            
-                                                @if ($data->aceptado == null)
-                                                    <a href="/admin/destacar/1/{{ $data->id }}" class="btn btn-primary">Aceptar</a>
-                                                @else
-                                                    <a href="/admin/destacar/0/{{ $data->id }}" class="btn btn-danger">Rechazar</a>
-                                                @endif
-                                                
-                                            
-                                        </td>
+                                        
+                                        
                                     </tr>
                                     @endforeach
                                 </tbody>

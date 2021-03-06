@@ -372,7 +372,7 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
 
 
         CategoriaProducto::where("producto_id",$data->id)->delete();
-        if( count($request->input("categorias")) > 0 ){
+        if( $request->input("categorias") != null ){
             foreach($request->input("categorias") as $c){
                 $categoria_tienda = new CategoriaProducto;
                 $categoria_tienda->producto_id = $data->id;
@@ -440,7 +440,23 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
             $view = "voyager::$slug.edit-add";
         }
 
-        $categorias = \Auth::user()->tienda()->get()[0]->categorias()->get();
+        //$categorias = \Auth::user()->tienda()->get()[0]->categorias()->get();
+
+        //dd(\Auth::user()->tienda()->get());
+        /*$tienda = \Auth::user()->tienda()->get();
+        $categorias = [];
+        if( count($tienda) > 0 ){
+            $categorias = \Auth::user()->tienda()->get()[0]->categorias()->get();
+        }*/
+        //dd( $categorias );
+
+        $tienda = \Auth::user()->tienda()->get();
+        if( count($tienda) > 0 ){
+            $categorias = \Auth::user()->tienda()->get()[0]->categorias()->get();
+        } else {
+            return redirect("/admin/tiendas");
+        }
+
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','categorias'));
     }
@@ -454,6 +470,7 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
      */
     public function store(Request $request)
     {
+        //dd( $request->input("categorias") );
         $slug = $this->getSlug($request);
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
@@ -467,7 +484,7 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
 
         event(new BreadDataAdded($dataType, $data));
 
-        if( count($request->input("categorias")) > 0 ){
+        if( $request->input("categorias") != null ){
             foreach($request->input("categorias") as $c){
                 $categoria_tienda = new CategoriaProducto;
                 $categoria_tienda->producto_id = $data->id;

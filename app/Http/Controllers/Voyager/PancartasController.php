@@ -167,9 +167,13 @@ class PancartasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
         }
 
         //dataTypeContent
-        if( \Auth::user()->tienda()->count() > 0 ){
+        if( \Auth::user()->role_id != 1 && \Auth::user()->role_id != 2 && \Auth::user()->tienda()->count() > 0 ){
             $dataTypeContent = \Auth::user()->tienda()->get()[0]->pancartas()->get();
-        } 
+            
+        } if( \Auth::user()->role_id != 1 && \Auth::user()->role_id != 2 && \Auth::user()->tienda()->count() == 0 ){
+            $dataTypeContent = [];
+            //dd($dataTypeContent);
+        }
        // dd( \Auth::user()->tienda()->get()[0]->pancartas()->get() );
 
 
@@ -398,6 +402,10 @@ class PancartasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
         if (view()->exists("voyager::$slug.edit-add")) {
             $view = "voyager::$slug.edit-add";
         }
+        //dd(\Auth::user()->role_id);
+        if( \Auth::user()->role_id != 1 && \Auth::user()->role_id != 2 &&  \Auth::user()->tienda()->count() == 0 ){
+            return redirect("/admin/tiendas");
+        } 
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
