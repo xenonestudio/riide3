@@ -66,7 +66,16 @@ class CategoriasController extends Controller
                 $query->where("dia",date("N"));
             }])
             ->get();
-        $tienda = $tienda[0];
+
+        if( count( $tienda ) > 0 ){
+            $tienda = $tienda[0];
+        }
+
+        
+        if( count( $tienda ) == 0 ){
+            $tienda = [];
+        }
+        
         //dd($tienda);
         //return $tienda;
         return view("tienda",compact("tienda"));
@@ -85,7 +94,7 @@ class CategoriasController extends Controller
 
     public function loMasHot(){
 
-        $categorias = Categoria::all();
+        $categorias = Categoria::where("categoria_id",null)->get();
 
         $destacados = Destacado::with( array("categoria" =>function($query){
             $query->with( array( "productos" => function($qp){

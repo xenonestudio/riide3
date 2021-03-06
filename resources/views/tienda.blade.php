@@ -2,6 +2,7 @@
 
 @section('content')
 
+@if( $tienda )
 <div style="background-image: url('/storage/{{ $tienda->panel }}') ;background-position: center;background-size: cover;" class="w-100 d-flex flex-column justify-content-end" id="banner-store">
     <div class="w-100 d-flex">
         <div class="pl-2 pb-2 pl-md-5 pb-md-5">
@@ -92,5 +93,12 @@
         
     </div>
 </div>
+@else
+
+<h1 class="text-center pt-5">tienda no encontrada</h1>
+
+@endif
+
+
 
 @endsection

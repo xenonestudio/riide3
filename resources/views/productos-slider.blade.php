@@ -29,22 +29,23 @@
   </style>
     <!-- Swiper -->
    
-    
-    <h3 class="mt-3">{{ $d->categoria->categoria }}</h3>
+    <div class="container">
+
+      <h3 class="mt-3">{{ $d->categoria->categoria }}</h3>
     <div class="swiper-container">
       <div class="swiper-wrapper">
 
           @foreach ($d->categoria->productos as $p)
-          <div class="swiper-slide card-store mr-3" style="background: transparent">
-            <a href="/tienda/" class="card w-100 mt-2 p-2 mx-2" style="text-decoration: none">
-                <div class="w-100 card-img-store" style="background-image: url('https://venngage-wordpress.s3.amazonaws.com/uploads/2020/04/Curves-Twitch-Banner-Template.png') ;background-position: center;background-size: cover;"></div>
+          <div class="swiper-slide card-producto mr-3" style="background: transparent">
+            <a href="/producto/{{ $p->id }}" class="card w-100 mt-2 p-2 mx-2" style="text-decoration: none">
+                <div class="w-100 product-img" style="background-image: url('/storage/{{ $p->imagen }}') ;background-position: center;background-size: cover;"></div>
                 <div class="card-body p-0">
                   <p class="card-text text-center size-title-card mb-0 text-muted"></p>
                   <div class="w-100 d-flex">
-                      <div class="w-100 text-left text-dark" style="font-size: 8px !important;">
+                      <div class="w-100 text-left product-name text-dark">
                         {{ $p->producto }}
                       </div>
-                      <div class="w-100 text-right " style="font-size: 10px !important;">
+                      <div class="w-100 text-right product-price">
                         @if( $p->precio_b != null )
                         <b class="text-grey"> <s>{{ $p->precio_a }}</s> </b> 
                         @else
@@ -54,22 +55,23 @@
                       </div>
                   </div>
                   <div class="w-100 d-flex">
-                    <div class="w-100 text-left" style="font-size: 6px !important;">
-                     <b>{{ $p->tienda->tienda }}</b> 
+                    <div class="w-100 text-left product-store">
+                     {{ $p->tienda->tienda }}
                     </div>
-                    <div class="w-100 text-right " style="font-size: 10px !important;">
-                     <b>{{ $p->precio_b }}</b> 
+                    <div class="w-100 text-right product-price">
+                     <b class="text-dark">{{ $p->precio_b }}</b> 
                     </div>
                   </div>
-                  <div class="w-100 d-flex mt-3 justify-content-center">
-                    <button class="btn btn-primary btn-sm mr-1">
-                        <i class="fas fa-minus producto-icon"></i>
-                    </button>
-                    <input style="width: 30px ;" type="number">
-                    <button class="btn btn-primary btn-sm ml-1">
-                        <i class="fas fa-plus producto-icon"></i>
-                    </button>
+                  
                 </div>
+                <div class="w-100 d-flex mt-3 justify-content-center" style="height: 30px;">
+                  <button class="btn btn-primary btn-sm mr-1">
+                      <b>-</b>
+                  </button>
+                  <input style="width: 30px ;" type="number">
+                  <button class="btn btn-primary btn-sm ml-1">
+                    <b>+</b>
+                  </button>
                 </div>
             </a>
           </div>
@@ -82,6 +84,10 @@
       </div>
       <div class="swiper-pagination"></div>
     </div> 
+
+    </div>
+    
+    
 
   
   

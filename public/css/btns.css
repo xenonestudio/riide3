@@ -10,7 +10,7 @@
   }
   
   .btn-small-device{
-    min-width: 40px !important;
+    
   }
   .elements_buttom{
     display: flex;
@@ -24,7 +24,7 @@
   @media only screen and (max-width: 400px) {
   
     .btn-small-device{
-      min-width: 37px !important;
+      
       height: 36px;
     }
   

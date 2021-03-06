@@ -7,6 +7,15 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@font-face {
+  font-family: "century";
+  src: url("/css/century.ttf");
+}
+
+body {
+  font-family: century ;
+}
+
 .has-search .form-control {
     padding-left: 2.375rem;
 }
@@ -14,7 +23,9 @@
 .has-search .form-control-feedback {
     position: absolute;
     z-index: 2;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 2.375rem;
     height: 2.375rem;
     line-height: 2.375rem;
@@ -69,6 +80,10 @@
     box-shadow: -18px -6px 18px 3px rgb(0 0 0 / 20%), 11px 6px 20px 0 rgb(0 0 0 / 19%);
   }
   
+  .dropdown-toggle::after {
+    display: none !important;
+  }
+
   .button_center{
     background: #17c0d5;
     width: 90px;
@@ -81,7 +96,6 @@
     padding-top: 10%;
     color: white;
     transition: 0.5s;
-    font-size: 33px;
   }
   
   .button_center:hover{
@@ -214,7 +228,20 @@
     }
 
     .card-producto {
-      width: 120px ;
+      width: 180px ;
+  }
+
+  .product-name, .product-price {
+    font-size: 15px ;
+  }
+
+  .product-store {
+    font-size: 10px ;
+  }
+
+  .product-img {
+    width: 100% ;
+    height: 120px ;
   }
 
     .calificacion {
@@ -242,7 +269,7 @@
     }
 
     .producto-price {
-      font-size: 12px !important;
+      font-size: 15px !important;
     }
 
     .producto-icon {
@@ -255,6 +282,10 @@
 
     .producto-imagen {
       height: 250px ;
+    }
+
+    .title-cat {
+      font-size: 12px ;
     }
 
 }
@@ -277,8 +308,23 @@
     }
 
     .card-producto {
-      width: 150px ;
+      width: 180px ;
   }
+
+  .product-name, .product-price {
+    font-size: 15px ;
+  }
+
+  .product-store {
+    font-size: 10px ;
+  }
+
+  .product-img {
+    width: 100% ;
+    height: 120px ;
+  }
+
+
 
     #banner-store {
         height: 250px ;
@@ -297,6 +343,10 @@
     }
     .producto-price {
       font-size: 12px ;
+    }
+
+    .product-name {
+      font-size: 15px ;
     }
  }
 
@@ -343,6 +393,10 @@
 
     .producto-imagen {
       height: 280px ;
+    }
+
+    .title-cat {
+      font-size: 15px ;
     }
 
  }
