@@ -11,11 +11,40 @@
     @if($cont == 1)
         @include("slider-categorias")
     @endif
-    @if( $d->categoria != null )
-    @include("productos-slider")
+
+    <div class="container">
+        @if( $d->categoria != null )
+        <h3 class="mt-3">{{ $d->categoria->categoria }}</h3>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                @foreach($d->categoria->productos as $p)
+                    <div class="swiper-slide producto-card mr-3" style="background: transparent">
+                        @include("components.producto",[ "p" => $p ])
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <hr class="w-100">
     @endif
+    </div>
+
+    
     @php
         $cont++;
     @endphp
 @endforeach
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 'auto',
+    spaceBetween: 0,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+
+  swiper.swipeTo(0);
+</script>
 @endsection

@@ -21,6 +21,7 @@ use App\Categoria;
 use App\CategoriaTienda;
 use App\Tienda;
 use App\User;
+use App\Calificacione;
 
 class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController 
 {
@@ -483,8 +484,11 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
                     ]);
                 }
 
-                //dd( $request->input("categorias") );
-
+                $calificacion = new Calificacione;
+                $calificacion->calificacion = 5;
+                $calificacion->tienda_id = $data->id;
+                $calificacion->cantidad = 1;
+                $calificacion->save();
 
                 if( count($request->input("categorias")) > 0 ){
                     foreach($request->input("categorias") as $c){

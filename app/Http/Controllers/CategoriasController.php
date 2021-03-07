@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\CategoriaTienda;
 use App\Categoria;
 use App\Tienda;
@@ -44,7 +45,7 @@ class CategoriasController extends Controller
     public function subcategorias($id){
         $banners = Cartelera::where("pantalla_id",2)->with("pancartas")->get();
         $cartelera = $banners;
-        $categorias = Categoria::where("categoria_id",$id)->with(array("tiendas" => function($q){
+        $categorias = Categoria::where("categoria_id",$id)->orWhere("id",$id)->with(array("tiendas" => function($q){
             $q->with(array(
                 "horario" => function($qh){
                     $qh->where("horarios.dia",date("N"));
@@ -66,19 +67,8 @@ class CategoriasController extends Controller
                 $query->where("dia",date("N"));
             }])
             ->get();
-
-        if( count( $tienda ) > 0 ){
-            $tienda = $tienda[0];
-        }
-
-        
-        if( count( $tienda ) == 0 ){
-            $tienda = [];
-        }
-        
-        //dd($tienda);
-        //return $tienda;
         return view("tienda",compact("tienda"));
+        
     }
 
     public function producto($id){
@@ -93,19 +83,25 @@ class CategoriasController extends Controller
     }
 
     public function loMasHot(){
+        $r = new Route;
+        dd( Route::getName());
 
         $categorias = Categoria::where("categoria_id",null)->get();
 
         $destacados = Destacado::with( array("categoria" =>function($query){
             $query->with( array( "productos" => function($qp){
-                $qp->where("aceptado",1)->with("tienda");
+                $qp->where("aceptado",1)->with(array("tienda" => function($qt){
+                    $qt->with( array("horario" => function($qh){
+                        $qh->where("horarios.dia",date("N"));
+                    }));
+                }));
             }));
         }))
             ->with(array("cartelera" => function($qc){
                 $qc->with("pancartas");
             }))
             ->get();
-        //return $destacados;
+
         return view("loMasHot",compact("destacados","categorias"));
     }
 

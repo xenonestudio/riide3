@@ -206,6 +206,21 @@ body {
 
   ///////////////////////////////////////////
   @media (max-width: 576px) { 
+
+    ////////////////////////////////////////////
+    .producto-card {
+      width: 200px ;
+    }
+    .tienda-card {
+      width: 150px ;
+    }
+    .tienda-imagen-card {
+      width: 100% ;
+      height: 120px ;
+    }
+    ////////////////////////////////////////////
+
+
     .size-title-card {
         font-size: 15px ;
         
@@ -277,7 +292,7 @@ body {
     }
 
     .imagen-producto {
-      height: 80px ;
+      height: 120px ;
     }
 
     .producto-imagen {
@@ -291,6 +306,20 @@ body {
 }
 
 @media (min-width: 576px) { 
+
+////////////////////////////////////////////
+.producto-card {
+  width: 200px ;
+}
+.tienda-card {
+  width: 150px ;
+}
+.tienda-imagen-card {
+  width: 100% ;
+  height: 120px ;
+}
+////////////////////////////////////////////
+
     .slider-banner {
         height: 300px ;
     }
@@ -331,7 +360,7 @@ body {
     }
 
     .imagen-producto {
-      height: 100px ;
+      height: 120px ;
     }
 
     .producto-imagen {
@@ -352,6 +381,11 @@ body {
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { 
+    ////////////////////////////////////////////
+    .producto-card {
+      width: 200px ;
+    }
+    ////////////////////////////////////////////
     .size-title-card {
         font-size: 22px ;
     }
@@ -388,7 +422,7 @@ body {
     }
 
     .imagen-producto {
-      height: 100px ;
+      height: 120px ;
     }
 
     .producto-imagen {
@@ -403,6 +437,9 @@ body {
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
+
+
+
     .slider-banner {
         height: 350px ;
     }

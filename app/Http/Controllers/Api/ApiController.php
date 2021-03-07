@@ -25,7 +25,6 @@ class ApiController extends Controller
     public function categorias(){
 
         $banners = Cartelera::where("pantalla_id",1)->with("pancartas")->get();
-        //return $banners;
 
         $categorias = Categoria::where("categoria_id",null)->get();
         $arrayCategorias = [];
@@ -36,8 +35,11 @@ class ApiController extends Controller
                 "imagen" => $cat->imagen,
                 "tiendas" => CategoriaTienda::where("categoria_id",$cat->id)->count()
             ];
-            
         }
+
+        $cartelera = $banners;
+        $categorias = $arrayCategorias;
+        
         return [
             "cartelera" => $banners,
             "categorias" => $arrayCategorias
@@ -45,51 +47,43 @@ class ApiController extends Controller
     }
 
     public function tiendasPorCategoria($id){
-        $categorias = Categoria::where("categoria_id",$id)->with(array("tiendas" => function($q){
+        $banners = Cartelera::where("pantalla_id",2)->with("pancartas")->get();
+        $cartelera = $banners;
+        $categorias = Categoria::where("categoria_id",$id)->orWhere("id",$id)->with(array("tiendas" => function($q){
             $q->with(array(
                 "horario" => function($qh){
                     $qh->where("horarios.dia",date("N"));
                 },
                 "calificacion"));
          }))->get();
-        return $categorias;
+
+         
+         return [
+             "cartelera" => $cartelera,
+             "categorias" => $categorias
+         ];
+        //return view("subcategorias",compact("cartelera","categorias"));
     }
 
     public function loMasHot(){
+        $categorias = Categoria::where("categoria_id",null)->get();
+
         $destacados = Destacado::with( array("categoria" =>function($query){
             $query->with( array( "productos" => function($qp){
-                $qp->where("aceptado",1);
+                $qp->where("aceptado",1)->with(array("tienda" => function($qt){
+                    $qt->with( array("horario" => function($qh){
+                        $qh->where("horarios.dia",date("N"));
+                    }));
+                }));
             }));
         }))
             ->with(array("cartelera" => function($qc){
                 $qc->with("pancartas");
             }))
             ->get();
-        return $destacados;
-        
-        
-        /*$data = Destacado::all();//[0]->cartelera()->get()[0]->pancartas()->get();
-        //return "dfhgd";
-        $array = [];
-        for($x = 0 ; $x < count( $data ) ; $x++){
-            //return $data[$x]->cartelera()->get();
-            //return $data[$x]->cartelera()->get()[0]->pancartas()->get();
-            if( $data[$x]->cartelera_id != null ){
-                $array[] = [
-                    "type" => "banner",
-                    "data" => $data[$x]->cartelera()->get()[0]->pancartas()->get()
-                ];
-            }
-            if( $data[$x]->categoria_id != null ){
-               // return $data[$x]->categoria()->get();
-                $array[] = [
-                    "tipo" => "categoria",
-                    "categoria" => $data[$x]->categoria()->get()[0]->categoria,
-                    "data" => $data[$x]->categoria()->get()[0]->productos()->where("destacado",1)->get()//cartelera()->get()[0]->pancartas()->get()
-                ];
-            }
-        }
-        return $array;*/
+
+        return compact("destacados","categorias");
+        //return view("loMasHot",compact("destacados","categorias"));
     }
 
     public function tienda($id){
@@ -135,7 +129,7 @@ class ApiController extends Controller
                     },
                     "calificacion"));
              }));
-        }))
+        },"calificacion"))
         ->get();
 
         return [

@@ -56,7 +56,7 @@
                   </div>
                   <div class="w-100 d-flex">
                     <div class="w-100 text-left product-store">
-                     {{ $p->tienda->tienda }}
+                     @if($p->tienda != null){{ $p->tienda->tienda }} @endif 
                     </div>
                     <div class="w-100 text-right product-price">
                      <b class="text-dark">{{ $p->precio_b }}</b> 
