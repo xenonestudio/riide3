@@ -169,4 +169,12 @@ class CategoriasController extends Controller
         return view("search-tienda",compact("tienda"));
     }
 
+    public function lenguaje(){
+        return view("lenguaje");
+    }
+
+    public function bienvenido(){
+        return view("bienvenido");
+    }
+
 }

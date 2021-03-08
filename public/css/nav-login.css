@@ -1,0 +1,172 @@
+.login_container_left{
+    background: #17c0d5;
+    width: 50%;
+    box-shadow: 4px 3px 23px 0 rgba(0, 0, 0, 0.2), -2px -4px 14px 0 rgba(0, 0, 0, 0.19);
+    height: 177px;
+  }
+  
+  .login_container_center{
+    display: block;
+    z-index: 99;
+  }
+  
+  
+  .login_container_right{
+    background: #17c0d5;
+    width: 50%;
+    box-shadow: 4px 3px 23px 0 rgb(0 0 0 / 20%), -2px -4px 14px 0 rgb(0 0 0 / 19%);
+    height: 177px;
+  }
+  
+  .topless_login{
+    display: flex;
+    width: 100%;
+  }
+  
+  .login_logo_riide{
+    background-image: url(./../../../assets/image/logo_riide.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+    position: relative;
+    height: 100px;
+  }
+  
+  .logo_svg{
+    width: 165px;
+    height: auto;
+  }
+  
+  .logo_img{
+    background-position: center !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 113%;
+    height: 100%;
+    position: relative;
+    bottom: 100px;
+    left: -8px;
+  }
+  
+  
+  .group_login_inputs{
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 6%;
+    transition: 0.8s;
+    text-align: center;
+  }
+  
+  .form_login_riider{
+    text-align: left;
+  }
+  
+  .remeber_me_div{
+    margin-top: 4%;
+  }
+  
+  .success_btn_login{
+   margin-top: 20px;
+  }
+  
+  .log_in_social_account{
+    margin-top: 20px;
+  }
+  
+  .btns_social_login{
+    display: inline-flex;
+    margin-right: 5%;
+  }
+  .register_text{
+    margin-top: 40px;
+    color: #8f9091;
+    font-family: Century Gothic;
+    display: inline-flex;
+  }
+  
+  .register_text p{
+    margin-right: 5px;
+  }
+  .register_text a{
+    margin-right: 5px;
+    color: #17c0d5;
+  }
+  .register_text a:hover{
+    margin-right: 5px;
+    color: #108494;
+  }
+  
+  
+  @media only screen and (max-width: 1024px) {
+  
+    .group_login_inputs{
+      width: 300px;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 15%;
+    }
+  
+    .login_container_left{
+        height: 149px;
+    }
+  
+    .login_container_center{
+        display: block;
+        z-index: 99;
+    }
+  
+  
+    .login_container_right{
+        height: 149px;
+    }
+  
+    .logo_svg{
+        width: 139px;
+    }
+  
+    .logo_img{
+        width: 108%;
+        position: relative;
+        bottom: 84px;
+        left: -4px;
+    }
+  
+  
+  }
+  
+  @media only screen and (max-width: 400px) {
+  
+    .remeber_me_div{
+      margin-top: 3%;
+      transition: 0.2s;
+    }
+  
+    .success_btn_login{
+      margin-top: 15px;
+     }
+  
+     .log_in_social_account{
+       margin-top: 15px;
+     }
+  
+     .register_text{
+       margin-top: 13px;
+     }
+  
+     .login_container_left{
+      height: 135px;
+    }
+  
+    .login_container_right{
+      height: 135px;
+    }
+  
+  
+    .login_container_center{
+      margin-top: -14px;
+  }
+  
+  }
+  
+  

@@ -29,6 +29,18 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
+Route::get('/lenguaje', 'CategoriasController@lenguaje');
+Route::get('/bienvenido', 'CategoriasController@bienvenido');
+
+Route::get('/seleccione-tipo-usuario', function(){
+    //return Route::is("seleccione-tipo-usuario") . "---";
+    return view("seleccione-tipo-usuario");
+})->name("seleccione-tipo-usuario");
+
+Route::get('/log', function(){
+    return view("login");
+});
+
 Route::get('/categorias', 'CategoriasController@categorias');
 Route::get('/categorias/{id}', 'CategoriasController@subcategorias');
 Route::get('/tienda/{id}', 'CategoriasController@tienda');

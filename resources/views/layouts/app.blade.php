@@ -34,7 +34,8 @@
 </head>
 <body style="background: #f2f2f2;">
     <div id="app">
-        <!-- nav movil -->
+        @if( !Route::is("login") && !Route::is("seleccione-tipo-usuario") )
+            <!-- nav movil -->
         <div class="w-100 bg-primary d-sm-flex d-md-none flex-column header">
             <div class="p-2">
                 <div class="form-group has-search px-3 m-0" style="border-radius: 10px ;">
@@ -194,10 +195,13 @@
                 </div>
             </div>
         </div>
+        @endif
+        
 
         <main class="" style="margin-bottom: 200px ;">
             @yield('content')
         </main>
+        @if( !Route::is("login") && !Route::is("seleccione-tipo-usuario") )
         <div *ngIf="type" style="z-index: 1000000 ;" #bottomnav class="bottom_nav_container d-flex d-md-none">
 
             <div class="bar_left d-flex justify-content-around align-items-center">
@@ -283,6 +287,7 @@
             </div>
             
           </div>
+          @endif
           <script>
               $(function(){
                 $("#search,#search-movil").on('keypress',function(e) {
