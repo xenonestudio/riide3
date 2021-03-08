@@ -32,8 +32,10 @@ Auth::routes();
 Route::get('/categorias', 'CategoriasController@categorias');
 Route::get('/categorias/{id}', 'CategoriasController@subcategorias');
 Route::get('/tienda/{id}', 'CategoriasController@tienda');
+Route::get('/tienda/{id}/search/{search}', 'CategoriasController@searchTienda');
 Route::get('/producto/{id}', 'CategoriasController@producto');
 Route::get('/', 'CategoriasController@loMasHot')->name("lomashot");
 Route::get('/promociones', 'CategoriasController@promociones');
+Route::get('/search/{search}', 'CategoriasController@search');
 
 

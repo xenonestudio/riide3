@@ -145,8 +145,15 @@ class ApiController extends Controller
         
         $productos = Producto::where("producto","like","%$search%")
             ->orderBy("tienda_id")
-            ->with("tienda")
+            ->with(array("tienda" => function($q){
+                $q->with(array(
+                    "horario" => function($qh){
+                        $qh->where("horarios.dia",date("N"));
+                    },
+                    "calificacion"));
+             }))
             ->get();
+        dd($search);
         return $productos;
     }
 

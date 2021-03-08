@@ -85,19 +85,25 @@
     </div>
 </div>
 @else
-
 <h1 class="text-center pt-5">tienda no encontrada</h1>
-
 @endif
-
-
 <script>
     $(function(){
+        console.log( window.location.href.split("/") );
+
+        url = [];
+        for( x=0 ; x < window.location.href.split("/").length - 2 ; x++ ){
+            url.push(window.location.href.split("/")[x]);
+        }
+
+        console.log(url.join("/"))
+        url = url.join("/");
+
       $("#search-store").on('keypress',function(e) {
-        console.log( $(this).val() )
           if(e.which == 13) {
-              
-              window.location.href = window.location.href + "/search/" + $(this).val().split(" ").join("-")
+              console.log( $(this).val() )
+              console.log(url)
+              window.location.href = url + "/search/" + $(this).val().split(" ").join("-")
           }
       });
     })

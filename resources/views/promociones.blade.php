@@ -89,8 +89,5 @@
     },
   });
 
-  swiper.swipeTo(0);
 </script>
-
-
 @endsection

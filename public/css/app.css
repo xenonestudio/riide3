@@ -11197,6 +11197,8 @@ body {
 
   .producto-name {
     font-size: 15px !important;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .producto-price {
@@ -11282,6 +11284,8 @@ body {
 
   .producto-name {
     font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .producto-price {
@@ -11328,6 +11332,8 @@ body {
 
   .producto-name {
     font-size: 14px !important;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .producto-price {
@@ -11362,6 +11368,8 @@ body {
 
   .producto-name {
     font-size: 18px !important;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .producto-icon {

@@ -133,4 +133,40 @@ class CategoriasController extends Controller
         ];*/
     }
 
+    public function search($search){
+        $banners = Cartelera::where("pantalla_id",3)->with("pancartas")->get();
+        $search = implode(" ", explode("-",$search) );
+       
+        $productos = Producto::where("producto","like","%$search%")
+            ->orderBy("tienda_id")
+            ->with("tienda")
+            ->get();
+        $cartelera = $banners;
+        $tiendas = $productos;
+        return view("search",compact("cartelera","tiendas" ));
+    }
+
+    public function searchTienda($id,$search){
+        $search = implode(" ", explode("-",$search) );
+        $productos = Producto::where("producto","like","%$search%")->where("tienda_id",$id)
+            ->get();
+
+        $tienda = Tienda::where("id",$id)
+            ->with("categorias")
+            ->with("calificacion")
+            ->with(["horario" => function($query){
+                $query->where("dia",date("N"));
+            }])
+            ->get();
+            
+        if( count($tienda) > 0 ){
+            $tienda[0]->productos =  $productos;
+        } else {
+            return redirect("/categorias");
+        }
+        
+        
+        return view("search-tienda",compact("tienda"));
+    }
+
 }
