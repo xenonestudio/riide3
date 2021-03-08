@@ -560,6 +560,11 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
 
         $displayName = count($ids) > 1 ? $dataType->getTranslatedAttribute('display_name_plural') : $dataType->getTranslatedAttribute('display_name_singular');
 
+
+
+        CategoriaProducto::where("producto_id",$data->id)->delete();
+
+
         $res = $data->destroy($ids);
         $data = $res
             ? [

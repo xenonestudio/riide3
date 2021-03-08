@@ -22,8 +22,9 @@ use App\CategoriaTienda;
 use App\CategoriaProducto;
 use App\Tienda;
 use App\Producto;
-use App\User;
+use App\Horario;
 use App\Calificacione;
+use App\User;
 
 class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController 
 {
@@ -559,6 +560,9 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
 
 
         CategoriaTienda::where("tienda_id",$data->id)->delete();
+
+        Horario::where("tienda_id",$data->id)->delete();
+        Calificacione::where("tienda_id",$data->id)->delete();
 
         $productos = Producto::where("tienda_id",$data->id)->get();
         foreach( $productos as $p ){
