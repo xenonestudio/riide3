@@ -11,54 +11,48 @@
       </div>
       <div class="w-100 d-flex">
         <div class="w-100 d-flex align-items-start text-left">
-          <span class="" style="font-size: 10px ;">{{ $p->tienda->tienda }}</span>
+          <span class="" style="font-size: 10px ;"> 
+            @if($p->tienda != null)
+              {{ $p->tienda->tienda }}
+            @endif </span>
         </div>
           @if( Route::current()->getName() == "lomashot" )
-          @if( count( $p->tienda->horario ) > 0)
-          <script>
-              start = "{{ $p->tienda->horario[0]->inicio }}";
-              start =  parseInt(start.split(":").join(""));
-              end = "{{ $p->tienda->horario[0]->fin }}";
-              end =  parseInt(end.split(":").join(""));
-              date = new Date();
-              now = parseInt( date.getHours() + "" + date.getMinutes() );
-              if( start <= now && end >= now ){
-                  document.write(`
-                    <div class="w-100 text-success">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8"/>
-                      </svg>
-                    </div>
-                  `);
-              } else {
-                  document.write(`
-                    <div class="w-100 text-danger">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8"/>
-                      </svg>
-                    </div>
-                  `);
-              }
-              console.log( now ) ;
-          </script>
-      @else
-      @endif
-            
+
+            @if( $p->tienda != null )
+                @if( count( $p->tienda->horario ) > 0)
+                  <script>
+                    start = "{{ $p->tienda->horario[0]->inicio }}";
+                    start =  parseInt(start.split(":").join(""));
+                    end = "{{ $p->tienda->horario[0]->fin }}";
+                    end =  parseInt(end.split(":").join(""));
+                    date = new Date();
+                    now = parseInt( date.getHours() + "" + date.getMinutes() );
+                    if( start <= now && end >= now ){
+                      document.write(`
+                        <div class="w-100 text-success">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                          </svg>
+                        </div>
+                      `);
+                    } else {
+                      document.write(`
+                        <div class="w-100 text-danger">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                            <circle cx="8" cy="8" r="8"/>
+                        </svg>
+                      </div>
+                    `);
+                    }
+                  </script>
+                @else
+                @endif
+            @endif
           @endif
         <div class="w-100  text-right">
           <b>@if( $p->precio_b != null) ${{ $p->precio_b }} @endif </b>
         </div>
       </div>
-      <!--<div class="w-100 d-flex justify-content-between producto-name">
-          <div class="producto-name text-left">
-              {{ $p->producto }} <br>
-              <span class="" style="font-size: 10px ;">{{ $p->tienda->tienda }}</span>
-          </div>
-          <div class="producto-price">
-            <b>@if( $p->precio_b == null)${{ $p->precio_a }} @else <s style="color: #e0e0e0  ;">${{ $p->precio_a }}</s>@endif</b><br>
-            <b>${{ $p->precio_b }}</b>  
-          </div>
-      </div>-->
       <div class="w-100 d-flex justify-content-center mt-1">
           <button class="btn btn-primary btn-sm mr-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">

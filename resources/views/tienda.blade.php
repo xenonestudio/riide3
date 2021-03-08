@@ -8,7 +8,7 @@
         <div class="pl-2 pb-2 pl-md-3 pb-md-3">
             <img width="60" src="/storage/{{ $tienda[0]->imagen }}" alt="">
         </div>
-        <div class="w-100 d-flex flex-column">
+        <div class="w-100 d-flex flex-column" style="overflow: hidden;">
             <div class="w-100 d-flex">
                 <h4 class="pl-3 pb-0 mb-0 d-flex align-items-center text-white size-tienda-store">{{ $tienda[0]->tienda }}</h4>
                 <div class="ml-3 d-flex">

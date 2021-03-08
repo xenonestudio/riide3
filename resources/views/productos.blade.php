@@ -38,13 +38,17 @@
 
     <div class="col-12 col-md-6 px-md-5 px-md-1">
       <div class="w-100 d-flex pt-2">
-          <div>
+          @if( $producto[0]->tienda != null )
+            <div>
               <img width="50" src="/storage/{{ $producto[0]->tienda->imagen }}" alt="">
-          </div>
-          <div class="w-100 pl-2">
+            </div>
+            <div class="w-100 pl-2">
               <h3 class="pb-0 mb-0" style="font-size: 18px">{{ $producto[0]->producto }}</h3>
               <p>{{ $producto[0]->tienda->tienda }} <span class="text-primary">  @if( count($producto[0]->tienda->calificacion) > 0 ) <i class="fa fa-star"></i> {{ $producto[0]->tienda->calificacion[0]->calificacion }}@endif </span> </p>
-          </div>
+            </div>
+          @endif
+          
+
           <div>
               <p style="font-size: 22px ;" class="mb-0 px-3">
                 @if( $producto[0]->precio_b != null )
@@ -123,13 +127,17 @@
     <h3 class="mt-3">Productos relacionados</h3>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        @foreach ($producto[0]->tienda->productos as $p)
-        @if( $producto[0]->id != $p->id )
-          <div class="swiper-slide producto-card mr-3" style="background: transparent">
-            @include("components.producto")
-          </div>
+        @if( $producto[0]->tienda != null )
+          @if( count( $producto[0]->tienda->productos ) > 0 )
+            @foreach ($producto[0]->tienda->productos as $p)
+              @if( $producto[0]->id != $p->id )
+                <div class="swiper-slide producto-card mr-3" style="background: transparent">
+                  @include("components.producto")
+                </div>
+              @endif
+            @endforeach
+          @endif
         @endif
-        @endforeach
       </div>
       <div class="swiper-pagination"></div>
     </div> 

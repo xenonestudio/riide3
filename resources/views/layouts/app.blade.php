@@ -195,76 +195,14 @@
             </div>
         </div>
 
-
-        <!--<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    
-                    <ul class="navbar-nav ml-auto">
-                       
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>-->
-
         <main class="" style="margin-bottom: 200px ;">
             @yield('content')
         </main>
-
-
-
-
-
-
-
-
-
-
         <div *ngIf="type" style="z-index: 1000000 ;" #bottomnav class="bottom_nav_container d-flex d-md-none">
 
             <div class="bar_left d-flex justify-content-around align-items-center">
         
-              <button type="submit" class="btn p-0 riide-btn btn-small-device">
+              <a href="/promociones" type="submit" class="btn p-0 riide-btn btn-small-device">
                 <div class="elements_buttom">
                   
                   <div class="w-100 text-muted font-weight-bold">
@@ -274,10 +212,9 @@
                       <span style="font-size: 10px !important ;">Promociones</span>
                   </div>
                 </div>
-              
-              </button>
+            </a>
         
-              <button type="submit" class="btn p-0 riide-btn btn-small-device">
+              <a type="submit" class="btn p-0 riide-btn btn-small-device">
                 <div class="elements_buttom">
                     <div class="w-100 text-muted font-weight-bold">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-wallet-fill" viewBox="0 0 16 16">
@@ -288,11 +225,11 @@
                      </div>
                 </div>
               
-              </button>
+            </a>
         
         
             </div>
-            <div class="bar_center">
+            <a href="/" class="bar_center">
             
             
               <svg version="1.1" id="Color_Fill_1_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -314,10 +251,10 @@
             </div>
             
             
-            </div>
+        </a>
             <div class="bar_right d-flex justify-content-around align-items-center">
         
-                <button type="submit" class="btn p-0 riide-btn btn-small-device">
+                <a href="/categorias" type="submit" class="btn p-0 riide-btn btn-small-device">
                     <div class="elements_buttom">
                       
                       <div class="w-100 text-muted font-weight-bold">
@@ -328,7 +265,7 @@
                       </div>
                     </div>
                   
-                  </button>
+                </a>
             
                   <button type="submit" class="btn p-0 riide-btn btn-small-device">
                     <div class="elements_buttom">
@@ -346,123 +283,9 @@
             </div>
             
           </div>
-
-
-
-
-
-
-
-
-
-
-        <!--
-        <div class="fixed-bottom w-100 d-flex d-md-none" style="height: 60px ;box-shadow: 10px 5px 5px black;
-        ">
-            <div class="w-100 bg-white d-flex">
-                <div class="w-100 d-flex flex-column">
-                    <div class="h-100 text-center pt-1">
-                        <i class="fas fa-home" style="font-size: 27px ;"></i>
-                    </div>
-                    <div class="h-100 text-center">sdgsdg</div>
-                </div>
-                <div class="w-100 d-flex flex-column">
-                    <div class="h-100 text-center pt-1">
-                        <i class="fas fa-home" style="font-size: 27px ;"></i>
-                    </div>
-                    <div class="h-100 text-center">sdgsdg</div>
-                </div>
-            </div>
-            <div class=" d-flex justify-content-center bg-white" style="width: 200px ;overflow: hidden ;">
-                <div class="bg-primary position-absolute rounded-circle d-flex justify-content-center align-items-center " style="top:-25px;width: 100px ; height: 100px ;font-size: 40px ;">
-                    <i class="fas fa-home text-white"></i>
-                </div>
-            </div>
-            <div class="w-100 bg-white d-flex">
-                <div class="w-100 d-flex flex-column">
-                    <div class="h-100 text-center pt-1">
-                        <i class="fas fa-home" style="font-size: 27px ;"></i>
-                    </div>
-                    <div class="h-100 text-center">sdgsdg</div>
-                </div>
-                <div class="w-100 d-flex flex-column">
-                    <div class="h-100 text-center pt-1">
-                        <i class="fas fa-home" style="font-size: 27px ;"></i>
-                    </div>
-                    <div class="h-100 text-center">sdgsdg</div>
-                </div>
-            </div>
-        </div>-->
-
-<!--
-
-        <div class="bottom_nav_container d-flex d-md-none">
-
-            <div class="bar_left d-flex">
-        
-              <button type="submit" class="btn riide-btn btn-small-device d-flex flex-column w-100 pt-2">
-                <div class="w-100">
-                    <i class="fas fa-percent text-muted" style="font-size: 25px ;"></i>
-                </div>
-                <div class="w-100 text-muted">Promociones</div>
-              </button>
-        
-              <button type="submit" class="btn riide-btn btn-small-device  d-flex flex-column w-100 pt-2">
-                <div class="w-100">
-                    <i class="fas fa-wallet text-muted" style="font-size: 25px ;"></i>
-                </div>
-                <div class="w-100 text-muted">RiidePay</div>
-              
-              </button>
-        
-        
-            </div>
-            <div class="bar_center" >
-            
-            
-              <svg version="1.1" id="Color_Fill_1_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-               y="0px" width="100%"  viewBox="0 29.81 120 90.19" enable-background="new 0 29.81 120 90.19"
-               xml:space="preserve">
-            <g id="Color_Fill_1">
-              <g>
-                <path class="path_svg" fill="#FFFFFF" d="M104,41c-5.973,13.627-9.779,36.127-44,36c-34.036-0.126-38.852-20.487-44-36
-                  C11.935,28.75,0,29.834,0,29.834V120h120V29.834C120,29.834,109.368,28.75,104,41z"/>
-              </g>
-            </g>
-            </svg>
-            
-            <div id="btncenter" class="button_center">
-              <i class='fas fa-store-alt style='font-size:20px'></i>
-            </div>
-            
-            
-            </div>
-            <div class="bar_right d-flex">
-        
-        
-                <button type="submit" class="btn riide-btn btn-small-device d-flex flex-column w-100 pt-2">
-                    <div class="w-100">
-                        <i class="fas fa-th-large text-muted" style="font-size: 25px ;"></i>
-                    </div>
-                    <div class="w-100 text-muted">Categorias</div>
-                  </button>
-            
-                  <button type="submit" class="btn riide-btn btn-small-device  d-flex flex-column w-100 pt-2">
-                    <div class="w-100">
-                        <i class="fas fa-bars text-muted" style="font-size: 25px ;"></i>
-                    </div>
-                    <div class="w-100 text-muted">Mas</div>
-        
-            </div>
-            
-          </div>-->
-
-    
-
-
           <script>
               $(function(){
-                $("#search").on('keypress',function(e) {
+                $("#search,#search-movil").on('keypress',function(e) {
                     if(e.which == 13) {
                         console.log( $(this).val() )
                         window.location.href = "/search/" + $(this).val().split(" ").join("-")

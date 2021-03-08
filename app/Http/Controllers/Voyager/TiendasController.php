@@ -19,7 +19,9 @@ use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
 use App\Categoria;
 use App\CategoriaTienda;
+use App\CategoriaProducto;
 use App\Tienda;
+use App\Producto;
 use App\User;
 use App\Calificacione;
 
@@ -555,6 +557,14 @@ class TiendasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControl
 
         $displayName = count($ids) > 1 ? $dataType->getTranslatedAttribute('display_name_plural') : $dataType->getTranslatedAttribute('display_name_singular');
 
+
+        CategoriaTienda::where("tienda_id",$data->id)->delete();
+
+        $productos = Producto::where("tienda_id",$data->id)->get();
+        foreach( $productos as $p ){
+            CategoriaProducto::where("producto_id",$p->id)->delete();
+            Producto::where("id",$p->id)->delete();
+        }
 
         $user = User::find( $data->user_id );
         if($user){

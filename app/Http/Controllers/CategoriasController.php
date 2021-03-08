@@ -134,7 +134,7 @@ class CategoriasController extends Controller
     }
 
     public function search($search){
-        $banners = Cartelera::where("pantalla_id",3)->with("pancartas")->get();
+        $banners = Cartelera::where("pantalla_id",5)->with("pancartas")->get();
         $search = implode(" ", explode("-",$search) );
        
         $productos = Producto::where("producto","like","%$search%")
@@ -158,7 +158,7 @@ class CategoriasController extends Controller
                 $query->where("dia",date("N"));
             }])
             ->get();
-            
+
         if( count($tienda) > 0 ){
             $tienda[0]->productos =  $productos;
         } else {
