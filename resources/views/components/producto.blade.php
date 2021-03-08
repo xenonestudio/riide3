@@ -46,7 +46,7 @@
             
           @endif
         <div class="w-100  text-right">
-          <b>${{ $p->precio_b }}</b>
+          <b>@if( $p->precio_b != null) ${{ $p->precio_b }} @endif </b>
         </div>
       </div>
       <!--<div class="w-100 d-flex justify-content-between producto-name">
