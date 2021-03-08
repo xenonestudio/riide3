@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 use App\CategoriaTienda;
 use App\Categoria;
 use App\Tienda;
@@ -83,8 +84,8 @@ class CategoriasController extends Controller
     }
 
     public function loMasHot(){
-        $r = new Route;
-        dd( Route::getName());
+        //$r = new Route;
+        //dd( Route::current()->getName() );
 
         $categorias = Categoria::where("categoria_id",null)->get();
 
@@ -101,6 +102,8 @@ class CategoriasController extends Controller
                 $qc->with("pancartas");
             }))
             ->get();
+
+        //dd(compact("destacados","categorias"));
 
         return view("loMasHot",compact("destacados","categorias"));
     }

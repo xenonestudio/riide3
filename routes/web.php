@@ -33,7 +33,7 @@ Route::get('/categorias', 'CategoriasController@categorias');
 Route::get('/categorias/{id}', 'CategoriasController@subcategorias');
 Route::get('/tienda/{id}', 'CategoriasController@tienda');
 Route::get('/producto/{id}', 'CategoriasController@producto');
-Route::get('/', 'CategoriasController@loMasHot');
+Route::get('/', 'CategoriasController@loMasHot')->name("lomashot");
 Route::get('/promociones', 'CategoriasController@promociones');
 
 
