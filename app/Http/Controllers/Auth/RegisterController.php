@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App\Tienda;
 
 class RegisterController extends Controller
 {
@@ -143,7 +143,10 @@ class RegisterController extends Controller
             $user->role_id = 3;
             $user->save();
             
-            
+            $tienda = new Tienda;
+            $tienda->user_id = $user->id;
+            $tienda->save();
+
             
 
             /*RoleUser::create([
