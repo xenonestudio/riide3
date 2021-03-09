@@ -9,7 +9,7 @@
          <b>@if( $p->precio_b == null)${{ $p->precio_a }} @else <s style="color: #e0e0e0  ;">${{ $p->precio_a }}</s>@endif</b>
         </div>
       </div>
-      <div class="w-100 d-flex">
+      <div class="w-100 d-flex" style="height: 28px ;">
         <div class="w-100 d-flex align-items-start text-left">
           <span class="" style="font-size: 10px ;"> 
             @if($p->tienda != null)
