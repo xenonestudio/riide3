@@ -34,7 +34,7 @@
 </head>
 <body style="background: #f2f2f2;">
     <div id="app">
-        @if( !Route::is("login") && !Route::is("seleccione-tipo-usuario") )
+        @if( !Route::is("login") && !Route::is("seleccione-tipo-usuario") && !Route::is("register") )
             <!-- nav movil -->
         <div class="w-100 bg-primary d-sm-flex d-md-none flex-column header">
             <div class="p-2">
@@ -201,7 +201,7 @@
         <main class="" style="margin-bottom: 200px ;">
             @yield('content')
         </main>
-        @if( !Route::is("login") && !Route::is("seleccione-tipo-usuario") )
+        @if( !Route::is("login") && !Route::is("seleccione-tipo-usuario") && !Route::is("register") )
         <div *ngIf="type" style="z-index: 1000000 ;" #bottomnav class="bottom_nav_container d-flex d-md-none">
 
             <div class="bar_left d-flex justify-content-around align-items-center">
