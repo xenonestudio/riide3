@@ -78,7 +78,7 @@ class RegisterController extends Controller
             $profileImageSaveAsName = time() . "-profile." . $profileImage->getClientOriginalExtension();
 
             $upload_path = 'storage/img/';
-            $profile_image_url = $upload_path . $profileImageSaveAsName;
+            $profile_image_url = "img/". $profileImageSaveAsName;
             $photo = $profile_image_url;
             $success = $profileImage->move($upload_path, $profileImageSaveAsName);
         }
@@ -88,7 +88,7 @@ class RegisterController extends Controller
             $profileImageSaveAsName = time() . "-lc." . $profileImage->getClientOriginalExtension();
 
             $upload_path = 'storage/img/';
-            $profile_image_url = $upload_path . $profileImageSaveAsName;
+            $profile_image_url = "img/" . $profileImageSaveAsName;
             $lc = $profile_image_url;
             $success = $profileImage->move($upload_path, $profileImageSaveAsName);
         }
@@ -98,7 +98,7 @@ class RegisterController extends Controller
             $profileImageSaveAsName = time() . "-cm." . $profileImage->getClientOriginalExtension();
 
             $upload_path = 'storage/img/';
-            $profile_image_url = $upload_path . $profileImageSaveAsName;
+            $profile_image_url = "img/" . $profileImageSaveAsName;
             $cm = $profile_image_url;
             $success = $profileImage->move($upload_path, $profileImageSaveAsName);
         }
@@ -108,7 +108,7 @@ class RegisterController extends Controller
             $profileImageSaveAsName = time() . "-ap." . $profileImage->getClientOriginalExtension();
 
             $upload_path = 'storage/img/';
-            $profile_image_url = $upload_path . $profileImageSaveAsName;
+            $profile_image_url = "img/" . $profileImageSaveAsName;
             $ap = $profile_image_url;
             $success = $profileImage->move($upload_path, $profileImageSaveAsName);
         }
