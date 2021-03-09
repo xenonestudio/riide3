@@ -77,7 +77,7 @@ class RegisterController extends Controller
             $profileImage = $request->file('photo');
             $profileImageSaveAsName = time() . "-profile." . $profileImage->getClientOriginalExtension();
 
-            $upload_path = 'img/';
+            $upload_path = 'storage/img/';
             $profile_image_url = $upload_path . $profileImageSaveAsName;
             $photo = $profile_image_url;
             $success = $profileImage->move($upload_path, $profileImageSaveAsName);
@@ -87,7 +87,7 @@ class RegisterController extends Controller
             $profileImage = $request->file('lc');
             $profileImageSaveAsName = time() . "-lc." . $profileImage->getClientOriginalExtension();
 
-            $upload_path = 'img/';
+            $upload_path = 'storage/img/';
             $profile_image_url = $upload_path . $profileImageSaveAsName;
             $lc = $profile_image_url;
             $success = $profileImage->move($upload_path, $profileImageSaveAsName);
@@ -97,7 +97,7 @@ class RegisterController extends Controller
             $profileImage = $request->file('cm');
             $profileImageSaveAsName = time() . "-cm." . $profileImage->getClientOriginalExtension();
 
-            $upload_path = 'img/';
+            $upload_path = 'storage/img/';
             $profile_image_url = $upload_path . $profileImageSaveAsName;
             $cm = $profile_image_url;
             $success = $profileImage->move($upload_path, $profileImageSaveAsName);
@@ -107,7 +107,7 @@ class RegisterController extends Controller
             $profileImage = $request->file('ap');
             $profileImageSaveAsName = time() . "-ap." . $profileImage->getClientOriginalExtension();
 
-            $upload_path = 'img/';
+            $upload_path = 'storage/img/';
             $profile_image_url = $upload_path . $profileImageSaveAsName;
             $ap = $profile_image_url;
             $success = $profileImage->move($upload_path, $profileImageSaveAsName);
