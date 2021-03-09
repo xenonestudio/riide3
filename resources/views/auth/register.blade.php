@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12 d-flex flex-column justify-content-center align-items-center">
             <!--<img src="{{ asset('img/logo.png') }}" width="150" alt="">-->
-            <form id="form-1" style="display: none ;" enctype="multipart/form-data" method="POST" class="row mt-5" action="{{ route('register') }}">
+            <form id="form-5" style="display: none ;" enctype="multipart/form-data" method="POST" class="row mt-5" action="{{ route('register') }}">
                 @csrf
                 <input type="hidden" name="role_id" id="role_id">
                 <div class="col-md-12">
@@ -86,7 +86,7 @@
                     </button>
                 </div>
             </form>
-            <form id="form-2" style="display: none ;" enctype="multipart/form-data" method="POST" class="row mt-5" action="{{ route('register') }}">
+            <form id="form-3" style="display: none ;" enctype="multipart/form-data" method="POST" class="row mt-5" action="{{ route('register') }}">
                 @csrf
                 <input type="hidden" name="role_id">
                 <div class="col-md-12">
@@ -194,7 +194,7 @@
                     </button>
                 </div>
             </form>
-            <form id="form-3" style="display: none ;" enctype="multipart/form-data" method="POST" class="row mt-5" action="{{ route('register') }}">
+            <form id="form-4" style="display: none ;" enctype="multipart/form-data" method="POST" class="row mt-5" action="{{ route('register') }}">
                 @csrf
                 <input type="hidden" name="role_id">
                 <div class="col-md-12">

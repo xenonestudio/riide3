@@ -121,7 +121,7 @@ class RegisterController extends Controller
             $user->email = $data['email'];
             $user->password = Hash::make($data['password']);
             $user->avatar = $photo;
-            $user->rol_id = 1;
+            $user->role_id = 1;
             $user->save();
             
             
