@@ -50,7 +50,7 @@
             @endif
           @endif
         <div class="w-100  text-right">
-          <b>@if( $p->precio_b != null) ${{ $p->precio_b }} @endif </b>
+          <b>&nbsp;@if( $p->precio_b != null) ${{ $p->precio_b }} @endif </b>
         </div>
       </div>
       <div class="w-100 d-flex justify-content-center mt-1">
