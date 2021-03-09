@@ -67,7 +67,7 @@ class RegisterController extends Controller
         //dd($data);
         $request = request();
 
-        dd( $request );
+       // dd( $request );
 
         $photo = null;
         $lc = null;
