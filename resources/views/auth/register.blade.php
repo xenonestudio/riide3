@@ -180,12 +180,12 @@
                 </div>
                 <div class="col-md-12 text-center">
                     <div class="form-group pt-5">
-                        <label for="photo" style="">
+                        <label for="photoA" style="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
                                 <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
                               </svg>
                         Foto</label>
-                        <input type="file" id="photo" name="photo" style="position: absolute ; width: 0px ;height: 0px ;    display: contents;">
+                        <input type="file" id="photoA" name="photo" style="position: absolute ; width: 0px ;height: 0px ;    display: contents;">
                     </div>
                 </div>
                 <div class="w-100 d-flex justify-content-center mt-5">
@@ -302,12 +302,12 @@
                             
                             
                 <div class="col-md-3 mt-3">
-                    <label for="photo" style="">
+                    <label for="photoR" style="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
                             <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
                           </svg>
                         Foto</label>
-                    <input type="file" id="photo" name="photo" style="display: none ;">
+                    <input type="file" id="photoR" name="photo" style="display: none ;">
                 </div>
                 <div class="col-md-3 mt-3">
                     <label for="lc" style="">
