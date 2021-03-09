@@ -113,7 +113,7 @@ class RegisterController extends Controller
 
         
         //dd($data);
-        if( intval($data["role_id"]) == 1 ){
+        if( intval($data["role_id"]) == 5 ){
             
             $user = new User;
             $user->name = $data['name'];
@@ -121,7 +121,7 @@ class RegisterController extends Controller
             $user->email = $data['email'];
             $user->password = Hash::make($data['password']);
             $user->avatar = $photo;
-            $user->role_id = 1;
+            $user->role_id = 5;
             $user->save();
             
             
@@ -130,7 +130,7 @@ class RegisterController extends Controller
                 "user_id" => $user->id
             ]);*/
         }
-        if( intval($data["role_id"]) == 2 ){
+        if( intval($data["role_id"]) == 3 ){
             $user = new User;
             $user->name = $data['name'];
             $user->email = $data['email'];
@@ -140,7 +140,7 @@ class RegisterController extends Controller
             $user->branches = $data['branches'];
             $user->password = Hash::make($data['password']);
             $user->avatar = $photo;
-            $user->role_id = 2;
+            $user->role_id = 3;
             $user->save();
             
             
@@ -151,7 +151,7 @@ class RegisterController extends Controller
                 "user_id" => $user->id
             ]);*/
         }
-        if( intval($data["role_id"]) == 3){
+        if( intval($data["role_id"]) == 4){
             $user = new User;
             $user->name = $data['name'];
             $user->email = $data['email'];
@@ -165,7 +165,7 @@ class RegisterController extends Controller
             $user->lc = $lc;
             $user->cm = $cm;
             $user->ap = $ap;
-            $user->role_id = 3;
+            $user->role_id = 4;
             $user->save();
             
             /*RoleUser::create([
