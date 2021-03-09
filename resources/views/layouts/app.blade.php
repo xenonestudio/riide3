@@ -49,7 +49,7 @@
             </div>
             <div class="d-flex">
                 @guest
-                <a href="/register" class="w-100 h-100 py-2 d-flex flex-column">
+                <a href="/login" class="w-100 h-100 py-2 d-flex flex-column">
                     <div class="w-80 text-center text-white">
                         <i class="" style="font-size: 20px ;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
@@ -58,7 +58,7 @@
                         </i>
                     </div>
                     <div class="w-20 text-center text-white" style="font-size: 10px ;">
-                        Registrate
+                        Ingresar
                     </div>
                 </a>
                 @else
@@ -115,9 +115,9 @@
         </div>
         <!-- nav movil -->
         <div class="w-100 bg-primary d-none d-md-flex bg-primary">
-            <div class="py-3 px-5 d-flex justify-content-center align-items-center">
+            <a href="/" class="py-3 px-5 d-flex justify-content-center align-items-center">
                 <img src="/img/logo_riide.svg" width="50" height="50" alt="">
-            </div>
+            </a>
             <div class="w-100 d-flex flex-column">
                 <div class="w-100 h-100 p-2">
                     <div class="form-group has-search m-0" style="border-radius: 10px ;">
@@ -156,17 +156,17 @@
                 </div>
 
                 @guest
-                    <div class="w-100 d-flex flex-column justify-content-end px-3">
+                    <a href="/login" class="w-100 d-flex flex-column justify-content-end px-3">
                         <div class="text-center text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                             </svg>
                         </div>
-                        <div class="text-center text-white pb-2">Registrate</div>
-                    </div>
+                        <div class="text-center text-white pb-2">Ingresar</div>
+                    </a>
                 @else
-                <div class="w-100 d-flex flex-column justify-content-end px-3">
-                    <div class="text-center text-white">
+                <div class="w-100 d-flex flex-column justify-content-end px-3 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="text-center text-white dropdown-toggle">
                         <img width="30" height="30" class="rounded-circle" src="/storage/{{ \Auth::user()->avatar }}" alt="">
                     </div>
                     <div class="text-center text-white pb-2">{{ explode(" ", \Auth::user()->name )[0] }}</div>

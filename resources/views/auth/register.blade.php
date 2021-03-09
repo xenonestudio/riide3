@@ -9,11 +9,11 @@
                 @csrf
                 <input type="hidden" name="role_id" id="role_id">
                 <div class="col-md-12">
-                    <h3 class="text-center my-5">{{ __("data.user") }}</h3>
+                    <h3 class="text-center my-5">Usuario</h3>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="name" style="">{{ __("data.name") }}</label>
+                        <label for="name" style="">Nombre</label>
                         <input id="name" type="text" class="form-control p-3 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="phone" style="">{{ __("data.phone") }}</label>
+                        <label for="phone" style="">Telefono</label>
                         <input id="phone" type="phone" class="form-control @error('email') is-invalid @enderror" name="phone" value="{{ old('email') }}" required autocomplete="email">
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="email" style="">{{ __("data.email") }}</label>
+                        <label for="email" style="">Email</label>
                         <input id="email" type="email" class="form-control" name="email" required> 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-md-3 offset-md-3">
                     <div class="form-group">
-                        <label for="password" style="">{{ __("data.password") }}</label>
+                        <label for="password" style="">Password</label>
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -57,21 +57,23 @@
                 </div>
                 <div class="col-md-3 ">
                     <div class="form-group">
-                        <label for="name" style="">{{ __("data.password_confirm") }}</label>
+                        <label for="name" style="">Confirm password</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                     </div>
                 </div>
                 <div class="col-md-12 text-center">
                     <div class="form-group pt-5">
                         <label for="photo" style="">
-                            <img src="/img/attachment.png" width="20" alt="">
-                        {{ __("data.attach_photo") }}</label>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+                                <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                              </svg>
+                        Foto</label>
                         <input type="file" id="photo" name="photo" style="position: absolute ; width: 0px ;height: 0px ;    display: contents;">
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="w-100 d-flex justify-content-center text-center mt-5" style="">
-                            <p style="font-size: 15px ;">{{__("data.register_with")}}</p>
+                            <p style="font-size: 15px ;">Registrarse con</p>
                         </div>
                         <div class="w-100 d-flex justify-content-center">
                             <a class="btn mr-2" style="background: #3b5998 ;color: white ;" > <i class="fa fa-facebook"></i> </a>
@@ -80,7 +82,7 @@
                 </div>
                 <div class="w-100 d-flex justify-content-center mt-5">
                     <button type="submit" style="width: 200px ;" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    Register
                     </button>
                 </div>
             </form>
@@ -88,11 +90,11 @@
                 @csrf
                 <input type="hidden" name="role_id">
                 <div class="col-md-12">
-                    <h3 class="text-center my-5">{{ __("data.associated") }}</h3>
+                    <h3 class="text-center my-5">Asociado</h3>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="name" style="">{{ __("data.name") }}</label>
+                        <label for="name" style="">Nombre</label>
                         <input id="name" type="text" class="form-control p-3 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -102,7 +104,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="type_doc" class="mb-1" style="">{{ __("data.type_document") }}</label>
+                    <label for="type_doc" class="mb-1" style="">Tipo de documento</label>
                     <div class="input-group mb-3">             
                         <div class="input-group-prepend">
                             <select name="type_document" style="width: 40px !important ;" id="type_document">
@@ -117,7 +119,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="phone" style="">{{ __("data.phone") }}</label>
+                        <label for="phone" style="">Telefono</label>
                         <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
@@ -128,7 +130,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="address" style="">{{ __("data.address") }}</label>
+                        <label for="address" style="">Direccion</label>
                         <input id="address" type="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
                         @error('address')
                             <span class="invalid-feedback" role="alert">
@@ -139,7 +141,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="branches" style="">{{ __("data.numbers") }}</label>
+                        <label for="branches" style="">Numero de sucursales</label>
                         <input id="branches" type="number" class="form-control @error('numbers') is-invalid @enderror" name="branches" value="{{ old('numbers') }}" required autocomplete="numbers">
                         @error('branches')
                             <span class="invalid-feedback" role="alert">
@@ -150,7 +152,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="email" style="">{{ __("data.email") }}</label>
+                        <label for="email" style="">Email</label>
                         <input id="email" type="email" class="form-control" name="email" required> 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -161,7 +163,7 @@
                 </div>
                 <div class="col-md-3 offset-md-3">
                     <div class="form-group">
-                        <label for="password" style="">{{ __("data.password") }}</label>
+                        <label for="password" style="">Password</label>
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -172,21 +174,23 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="name" style="">{{ __("data.password_confirm") }}</label>
+                        <label for="name" style="">Confirme contrasena</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                     </div>
                 </div>
                 <div class="col-md-12 text-center">
                     <div class="form-group pt-5">
                         <label for="photo" style="">
-                            <img src="/img/attachment.png" width="20" alt="">
-                        {{ __("data.attach_photo") }}</label>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+                                <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                              </svg>
+                        Foto</label>
                         <input type="file" id="photo" name="photo" style="position: absolute ; width: 0px ;height: 0px ;    display: contents;">
                     </div>
                 </div>
                 <div class="w-100 d-flex justify-content-center mt-5">
                     <button type="submit" style="width: 200px ;" class="btn btn-primary">
-                                    {{ __('Register') }}
+                        Register
                     </button>
                 </div>
             </form>
@@ -194,11 +198,11 @@
                 @csrf
                 <input type="hidden" name="role_id">
                 <div class="col-md-12">
-                    <h3 class="text-center my-5">{{ __("data.rider") }}</h3>
+                    <h3 class="text-center my-5">Riider</h3>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="name" style="">{{ __("data.name") }}</label>
+                        <label for="name" style="">Nombre</label>
                         <input id="name" type="text" class="form-control p-3 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -208,7 +212,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="type_doc" class="" style="">{{ __("data.type_document") }}</label>
+                    <label for="type_doc" class="" style="">Tipo de documento</label>
                     <div class="input-group mb-3">             
                         <div class="input-group-prepend">
                             <select name="type_document" style="width: 40px !important ;" id="type_document">
@@ -223,7 +227,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="phone" style="">{{ __("data.phone") }}</label>
+                        <label for="phone" style="">Telefono</label>
                         <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
@@ -234,7 +238,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="address" style="">{{ __("data.address") }}</label>
+                        <label for="address" style="">Direccion</label>
                         <input id="address" type="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
                         @error('address')
                             <span class="invalid-feedback" role="alert">
@@ -245,7 +249,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="last_work" style="">{{ __("data.last_work") }}</label>
+                        <label for="last_work" style="">Ultimo trabajo</label>
                         <input id="last_work" type="text" class="form-control @error('last_work') is-invalid @enderror" name="last_work" value="{{ old('last_work') }}" required autocomplete="last_work">
                         @error('last_work')
                             <span class="invalid-feedback" role="alert">
@@ -256,7 +260,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="last_boss" style="">{{ __("data.last_boss") }}</label>
+                        <label for="last_boss" style="">Ultimo jefe</label>
                         <input id="last_boss" type="text" class="form-control @error('last_boss') is-invalid @enderror" name="last_boss" value="{{ old('last_boss') }}" required autocomplete="last_boss">
                         @error('last_boss')
                             <span class="invalid-feedback" role="alert">
@@ -267,7 +271,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="email" style="">{{ __("data.email") }}</label>
+                        <label for="email" style="">Email</label>
                         <input id="email" type="email" class="form-control" name="email" required> 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -278,7 +282,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="password" style="">{{ __("data.password") }}</label>
+                        <label for="password" style="">Contrasena</label>
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -289,7 +293,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="name" style="">{{ __("data.password_confirm") }}</label>
+                        <label for="name" style="">Confirme contrasena</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                     </div>
                 </div>
@@ -298,24 +302,39 @@
                             
                             
                 <div class="col-md-3 mt-3">
-                    <label for="photo" style=""><img src="/img/attachment.png" width="20" alt="">{{ __("data.attach_photo") }}</label>
+                    <label for="photo" style="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+                            <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                          </svg>
+                        Foto</label>
                     <input type="file" id="photo" name="photo" style="display: none ;">
                 </div>
                 <div class="col-md-3 mt-3">
-                    <label for="lc" style=""><img src="/img/attachment.png" width="20" alt="">{{ __("data.lc") }}</label>
+                    <label for="lc" style="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+                        <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                      </svg>Licencia de conducir</label>
                     <input type="file" id="lc" name="lc" style="display: none ;">
                 </div>
                 <div class="col-md-3 mt-3">
-                    <label for="cm" style=""><img src="/img/attachment.png" width="20" alt="">{{ __("data.cm") }}</label>
+                    <label for="cm" style="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+                            <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                          </svg>
+                        Certificado medico</label>
                     <input type="file" id="cm" name="cm" style="display: none ;">
                 </div>
                 <div class="col-md-3 mt-3">
-                    <label for="ap" style=""><img src="/img/attachment.png" width="20" alt="">{{ __("data.ap") }}</label>
+                    <label for="ap" style="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+                            <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                          </svg>
+                        Antecedentes penales</label>
                     <input type="file" id="ap" name="ap" style="display: none ;">
                 </div>
                 <div class="w-100 d-flex justify-content-center mt-5">
                     <button type="submit" style="width: 200px ;" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    Register
                     </button>
                 </div>
             </form>

@@ -99,10 +99,10 @@
                     </button>
                 </div>
                 <div class="col-12 mt-3 offset-md-4 col-md-4 d-flex justify-content-center">
-                    <button class="w-100 btn btn-light bg-light border">Explorar</button>
+                    <a href="/" class="w-100 btn btn-light bg-light border">Explorar</a>
                 </div>
                 <div class="col-12 mt-2 offset-md-4 col-md-4 d-flex justify-content-center">
-                    <p class="text-center">¿No tienes una cuenta? <a href="">Regístrate</a> </p>
+                    <p class="text-center">¿No tienes una cuenta? <a href="/seleccione-tipo-usuario">Regístrate</a> </p>
                 </div>
             </form>
         </div>

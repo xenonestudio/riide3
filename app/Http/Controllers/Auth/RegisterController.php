@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+
 class RegisterController extends Controller
 {
     /*
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -124,10 +125,10 @@ class RegisterController extends Controller
             $user->save();
             
             
-            RoleUser::create([
+            /*RoleUser::create([
                 "role_id" =>  intval($data["role_id"]) ,
                 "user_id" => $user->id
-            ]);
+            ]);*/
         }
         if( intval($data["role_id"]) == 2 ){
             $user = new User;
@@ -139,25 +140,16 @@ class RegisterController extends Controller
             $user->branches = $data['branches'];
             $user->password = Hash::make($data['password']);
             $user->avatar = $photo;
-            $user->rol_id = 2;
+            $user->role_id = 2;
             $user->save();
             
             
-            $store = new Store;
-            $store->user_id = $user->id;
-            $store->save();
+            
 
-            for( $i = 1 ; $i <= 7 ; $i++ ){
-                $time = new TimeStore;
-                $time->store_id = $store->id;
-                $time->day = $i;
-                $time->save();
-            }
-
-            RoleUser::create([
+            /*RoleUser::create([
                 "role_id" =>  intval($data["role_id"]) ,
                 "user_id" => $user->id
-            ]);
+            ]);*/
         }
         if( intval($data["role_id"]) == 3){
             $user = new User;
@@ -173,13 +165,13 @@ class RegisterController extends Controller
             $user->lc = $lc;
             $user->cm = $cm;
             $user->ap = $ap;
-            $user->rol_id = 3;
+            $user->role_id = 3;
             $user->save();
             
-            RoleUser::create([
+            /*RoleUser::create([
                 "role_id" =>  intval($data["role_id"]) ,
                 "user_id" => $user->id
-            ]);
+            ]);*/
         }
 
         
