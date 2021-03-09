@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Tienda;
+use App\Calificacione;
 
 class RegisterController extends Controller
 {
@@ -149,6 +150,10 @@ class RegisterController extends Controller
             $tienda->user_id = $user->id;
             $tienda->save();
 
+            $calificacion = new Calificacione;
+            $calificacion->calificacion = 5;
+            $calificacion->tienda_id = $tienda->id;
+            $calificacion->save();
             
 
             /*RoleUser::create([
