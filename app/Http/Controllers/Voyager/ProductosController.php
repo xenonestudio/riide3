@@ -333,6 +333,17 @@ class ProductosController extends \TCG\Voyager\Http\Controllers\VoyagerBaseContr
         ///dd("hola",$categorias);
         //$categoria_productos = Producto::find($id)->categorias()->get();
 
+        if( \Auth::user()->tienda()->count() > 0 ){
+            $p = Producto::find($id);
+            if(\Auth::user()->tienda()->get()[0]->id == $p->tienda_id ){
+
+            } else {
+                return redirect("/admin/productos");
+            }
+        } else {
+            return redirect("/admin/productos");
+        }
+
         $categorias = \Auth::user()->tienda()->get()[0]->categorias()->get();//[0]->categorias()->get();
         $categoria_productos = Producto::find($id)->categorias()->get();
         //dd( $categorias ,$categoria_productos);
