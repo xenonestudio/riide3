@@ -14,7 +14,7 @@
 
     <div class="container">
         @if( $d->categoria != null )
-        <h3 class="mt-3">{{ $d->categoria->categoria }}</h3>
+        <h3 class="mt-3 d-flex align-items-center"> <img src="/img/fuego.svg" width="40" alt=""> {{ $d->categoria->categoria }}</h3>
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 @foreach($d->categoria->productos as $p)
