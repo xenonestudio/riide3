@@ -119,7 +119,7 @@
         </div>
         <!-- nav movil -->
         <div class="w-100 bg-primary d-none d-md-flex bg-primary">
-            <a href="/" class="py-3 px-5 d-flex justify-content-center align-items-center">
+            <a href="/lo-mas-hot" class="py-3 px-5 d-flex justify-content-center align-items-center">
                 <img src="/img/logo_riide.svg" width="50" height="50" alt="">
             </a>
             <div class="w-100 d-flex flex-column">
@@ -240,7 +240,7 @@
         
         
             </div>
-            <a href="/" class="bar_center">
+            <a href="/lo-mas-hot" class="bar_center">
             
             
               <svg version="1.1" id="Color_Fill_1_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
