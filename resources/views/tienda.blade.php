@@ -4,7 +4,7 @@
 
 @if( count($tienda) > 0)
 <div style="background-image: url('/storage/{{ $tienda[0]->panel }}') ;background-position: center;background-size: cover;" class="w-100 d-flex flex-column justify-content-end" id="banner-store">
-    <div class="w-100 d-flex">
+    <div class="w-100 h-100 position-absolute d-flex" background: linear-gradient(180deg, rgba(0,0,0,0.7), transparent);>
         <div class="pl-2 pb-2 pl-md-3 pb-md-3">
             <img width="60" src="/storage/{{ $tienda[0]->imagen }}" alt="">
         </div>
