@@ -29,9 +29,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
-Route::get('/', 'CategoriasController@splash');
-Route::get('/lenguaje', 'CategoriasController@lenguaje');
-Route::get('/bienvenido', 'CategoriasController@bienvenido');
+Route::get('/', 'CategoriasController@splash')->name("splash");
+Route::get('/lenguaje', 'CategoriasController@lenguaje')->name("lenguaje");
+Route::get('/bienvenido', 'CategoriasController@bienvenido')->name("bienvenido");
 
 Route::get('/seleccione-tipo-usuario', function(){
     //return Route::is("seleccione-tipo-usuario") . "---";

@@ -99,7 +99,7 @@
                     </button>
                 </div>
                 <div class="col-12 mt-3 offset-md-4 col-md-4 d-flex justify-content-center">
-                    <a href="/" class="w-100 btn btn-light bg-light border">Explorar</a>
+                    <a href="/lo-mas-hot" class="w-100 btn btn-light bg-light border">Explorar</a>
                 </div>
                 <div class="col-12 mt-2 offset-md-4 col-md-4 d-flex justify-content-center">
                     <p class="text-center">¿No tienes una cuenta? <a href="/seleccione-tipo-usuario">Regístrate</a> </p>

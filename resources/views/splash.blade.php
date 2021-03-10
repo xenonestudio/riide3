@@ -6,7 +6,6 @@
 </div>
 
 <script>
-
     @guest
         setTimeout(function(){
             window.location.href = "/lenguaje"
