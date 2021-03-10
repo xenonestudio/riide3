@@ -71,6 +71,10 @@
                     </div>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @if( \Auth::user()->role_id == 2 || \Auth::user()->role_id == 3 )
+                        <a class="dropdown-item" href="/admin">Panel administrativo</a>
+                        @endif
+                        
                         <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -171,6 +175,9 @@
                     </div>
                     <div class="text-center text-white pb-2">{{ explode(" ", \Auth::user()->name )[0] }}</div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @if( \Auth::user()->role_id == 2 || \Auth::user()->role_id == 3 )
+                        <a class="dropdown-item" href="/admin">Panel administrativo</a>
+                        @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
