@@ -6,8 +6,8 @@
         <img src="/img/logo_blue.png" alt="">
     </div>
     <div class="w-100 d-flex flex-md-row flex-column justify-content-center mt-5">
-        <a class="btn btn-primary btn-lg m-1 mr-md-5" style="font-size: 22px ;">Español</a>
-        <a class="btn btn-primary btn-lg m-1 ml-md-5" style="font-size: 22px ;">English</a>
+        <a href="/bienvenido" class="btn btn-primary btn-lg m-1 mr-md-5" style="font-size: 22px ;">Español</a>
+        <a href="/bienvenido" class="btn btn-primary btn-lg m-1 ml-md-5" style="font-size: 22px ;">English</a>
     </div>
 </div>
 @endsection

@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
+Route::get('/', 'CategoriasController@splash');
 Route::get('/lenguaje', 'CategoriasController@lenguaje');
 Route::get('/bienvenido', 'CategoriasController@bienvenido');
 
@@ -46,7 +47,7 @@ Route::get('/categorias/{id}', 'CategoriasController@subcategorias');
 Route::get('/tienda/{id}', 'CategoriasController@tienda');
 Route::get('/tienda/{id}/search/{search}', 'CategoriasController@searchTienda');
 Route::get('/producto/{id}', 'CategoriasController@producto');
-Route::get('/', 'CategoriasController@loMasHot')->name("lomashot");
+Route::get('/lo-mas-hot', 'CategoriasController@loMasHot')->name("lomashot");
 Route::get('/promociones', 'CategoriasController@promociones');
 Route::get('/search/{search}', 'CategoriasController@search');
 

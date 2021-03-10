@@ -176,5 +176,8 @@ class CategoriasController extends Controller
     public function bienvenido(){
         return view("bienvenido");
     }
+    public function splash(){
+        return view("splash");
+    }
 
 }

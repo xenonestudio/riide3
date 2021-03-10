@@ -42,13 +42,13 @@
         <img src="/img/find_food.png" alt="">
         <h3 class="mt-3">Tu comida favorita</h3>
         <p cl style="font-size: 15px !important ;">Descubra las mejores comidas de más de 1,000 restaurantes y entrega rápida a su puerta</p>
-        <button class="btn btn-primary btn-lg">Siguiente</button>
+        <button class="btn btn-primary btn-lg btn-next" role="button" data-slide="next">Siguiente</button>
       </div>
       <div class="swiper-slide flex-column p-1" style="background: #f2f2f2 !important;">
         <img src="/img/delivery.png" alt="">
         <h3 class="mt-3">Entrega rápida</h3>
         <p cl style="font-size: 15px !important ;">Descubra las mejores comidas de más de 1,000 restaurantes y entrega rápida a su puerta</p>
-        <button class="btn btn-primary btn-lg">Siguiente</button>
+        <button class="btn btn-primary btn-lg btn-next" role="button" data-slide="next">Siguiente</button>
       </div>
       <div class="swiper-slide flex-column p-1" style="background: #f2f2f2 !important;">
         <img src="/img/live_tracking.png" alt="">
@@ -56,7 +56,7 @@
         <p cl style="font-size: 15px !important ;">Seguimiento en tiempo real de su
           comida en la aplicación una vez
           que realizó el pedido</p>
-        <button class="btn btn-primary btn-lg">Siguiente</button>
+        <a href="/login" class="btn btn-primary btn-lg" role="button" data-slide="next">Siguiente</a>
       </div>
     </div>
     <!-- Add Pagination -->
@@ -73,6 +73,11 @@
         el: '.swiper-pagination',
       },
     });
+
+    $(".btn-next").on("click",function(){
+      swiper.slideNext();
+    })
+
   </script>
 </div>
 @endsection
