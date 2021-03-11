@@ -306,8 +306,20 @@ class CartelerasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseCont
         }
 
         $pancartas = Pancarta::orderByDesc('id')->get();
-        $cartelera_pancartas = CarteleraPancarta::where("cartelera_id",$id)->with("pancartas")->get();//Cartelera::find($id)->pancartas()->orderBy("id")->get();
-        dd( $cartelera_pancartas );
+        $cartelera_pancartas = Cartelera::find($id)->pancartas()->get();
+        $cp = CarteleraPancarta::where("cartelera_id",$id)->get();
+        $arrayCar = [];
+
+
+
+        for ($i=0; $i < count( $cp ) ; $i++) {
+            for ($j=0; $j < count($cartelera_pancartas) ; $j++) { 
+                if( $cp[$i]->pancarta_id == $cartelera_pancartas[$j]->id  ){
+                    $arrayCar[] = $cartelera_pancartas[$j];
+                }
+            }
+        }
+        dd( $arrayCar );
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','pancartas','cartelera_pancartas'));
     }
