@@ -7,7 +7,7 @@
     </div>
     <div class="w-100 d-flex flex-md-row flex-column justify-content-center mt-5">
         <a href="/bienvenido" class="btn btn-primary btn-lg m-1 mr-md-5" style="font-size: 22px ;">Español</a>
-        <a href="/bienvenido" class="btn btn-primary btn-lg m-1 ml-md-5" style="font-size: 22px ;">English</a>
+        <button onclick="alert('Deshabilitado para ésta versión')" href="" class="btn btn-primary btn-lg m-1 ml-md-5" style="font-size: 22px ;">English</button>
     </div>
 </div>
 @endsection

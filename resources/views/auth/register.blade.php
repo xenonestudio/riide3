@@ -72,16 +72,16 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="w-100 d-flex justify-content-center text-center mt-5" style="">
+                        <!--<div class="w-100 d-flex justify-content-center text-center mt-5" style="">
                             <p style="font-size: 15px ;">Registrarse con</p>
                         </div>
                         <div class="w-100 d-flex justify-content-center">
                             <a class="btn mr-2" style="background: #3b5998 ;color: white ;" > <i class="fa fa-facebook"></i> </a>
                             <a class="btn btn-danger ml-2"> <i class="fa fa-google"></i> </a>
-                        </div>
+                        </div>-->
                 </div>
                 <div class="w-100 d-flex justify-content-center mt-5">
-                    <button type="submit" style="width: 200px ;" class="btn btn-primary">
+                    <button onclick="alert('Deshabilitado para ésta versión')" type="button" style="width: 200px ;" class="btn btn-primary">
                                     Register
                     </button>
                 </div>
