@@ -319,7 +319,8 @@ class CartelerasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseCont
                 }
             }
         }
-        dd( $arrayCar );
+        //dd( $arrayCar );
+        $cartelera_pancartas = $arrayCar;
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','pancartas','cartelera_pancartas'));
     }
