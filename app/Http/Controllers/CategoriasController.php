@@ -99,7 +99,7 @@ class CategoriasController extends Controller
             }));
         }))
             ->with(array("cartelera" => function($qc){
-                $qc->with("pancartas");
+                $qc->orderBy("cartelera.id")->with("pancartas");
             }))
             ->get();
 
