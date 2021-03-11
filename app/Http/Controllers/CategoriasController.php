@@ -98,9 +98,12 @@ class CategoriasController extends Controller
                 }));
             }));
         }))
-            ->with(array("cartelera" => function($qc){
-                $qc->groupBy("carteleras.id")->with("pancartas");
-            }))
+        ->with(array("pancartas" => function($qc){
+            //$qc->with("pancartas");
+        }))
+            /*->with(array("cartelera" => function($qc){
+                //$qc->with("pancartas");
+            }))*/
             ->get();
 
         dd(compact("destacados","categorias"));
