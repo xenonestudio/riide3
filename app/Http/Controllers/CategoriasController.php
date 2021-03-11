@@ -98,15 +98,12 @@ class CategoriasController extends Controller
                 }));
             }));
         }))
-        ->with(array("pancartas" => function($qc){
-            //$qc->with("pancartas");
-        }))
-            /*->with(array("cartelera" => function($qc){
-                //$qc->with("pancartas");
-            }))*/
+            ->with(array("cartelera" => function($qc){
+                $qc->with("pancartas");
+            }))
             ->get();
 
-        dd(compact("destacados","categorias"));
+        //dd(compact("destacados","categorias"));
 
         return view("loMasHot",compact("destacados","categorias"));
     }
