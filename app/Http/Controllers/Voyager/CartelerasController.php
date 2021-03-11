@@ -306,7 +306,7 @@ class CartelerasController extends \TCG\Voyager\Http\Controllers\VoyagerBaseCont
         }
 
         $pancartas = Pancarta::orderByDesc('id')->get();
-        $cartelera_pancartas = Cartelera::find($id)->pancartas()->get();
+        $cartelera_pancartas = CarteleraPancarta::where("cartelera_id",$id)->orderBy("id")->get();//Cartelera::find($id)->pancartas()->get();
         dd( $cartelera_pancartas );
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','pancartas','cartelera_pancartas'));
