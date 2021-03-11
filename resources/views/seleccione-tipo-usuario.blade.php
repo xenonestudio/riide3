@@ -49,7 +49,7 @@
                         <h3 class="text-center pb-5"  style="">Registrate</h3>
                     </div>
                     <div class="col-12 col-md-4 col-sm-12">
-                        <button data-role="5" style="font-size: 18px ;" class="btn btn-primary btn-block mt-md-2">
+                        <button onclick="alert('Deshabilitado para ésta versión')" data-role="5" style="font-size: 18px ;" class="btn btn-primary btn-block mt-md-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                             </svg>
