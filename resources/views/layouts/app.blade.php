@@ -211,7 +211,51 @@
             @yield('content')
         </main>
         @if( !Route::is("splash") && !Route::is("lenguaje") && !Route::is("bienvenido") && !Route::is("login") && !Route::is("seleccione-tipo-usuario") && !Route::is("register") )
-        <div *ngIf="type" style="z-index: 1000000 ;" #bottomnav class="bottom_nav_container d-flex d-md-none">
+        
+        <div class="fixed-bottom w-100 d-flex d-md-none">
+            <div class="w-100 bg-white d-flex flex-column">
+                <a href="/promociones" class="w-100 h-100 d-flex text-muted justify-content-center align-items-center" style="font-size: 25px ;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-percent" viewBox="0 0 16 16">
+                        <path d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                    </svg>
+                </a>
+                <div class="text-center" style="font-size: 8px ;">Promociones</div>
+            </div>
+            <div class="w-100 bg-white d-flex flex-column">
+                <div class="w-100 h-100 d-flex text-muted justify-content-center align-items-center" style="font-size: 25px ;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+                        <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+                    </svg>
+                </div>
+                <div class="text-center" style="font-size: 8px ;">RiidePay</div>
+            </div>
+            <div class="">
+                <img width="100" height="50" src="/img/curva.png" alt="">
+                <a href="/lo-mas-hot" class="bg-primary shadow position-absolute rounded-circle d-flex justify-content-center align-items-center text-white" style="margin-left: 26px ;  width: 50px ;height: 50px ;top: -28px ;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                        <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="w-100 bg-white d-flex flex-column">
+                <a href="/categorias" class="w-100 h-100 d-flex text-muted justify-content-center align-items-center" style="font-size: 25px ;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+                      </svg>
+                </a>
+                <div class="text-center" style="font-size: 8px ;">Categorias</div>
+            </div>
+            <div class="w-100 bg-white d-flex text-muted flex-column">
+                <div class="w-100 h-100 d-flex justify-content-center align-items-center" style="font-size: 25px ;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </div>
+                <div class="text-center" style="font-size: 8px ;">Mas</div>
+            </div>
+        </div>
+        
+        <!--<div *ngIf="type" style="z-index: 1000000 ;" #bottomnav class="bottom_nav_container d-flex d-md-none">
 
             <div class="bar_left d-flex justify-content-around align-items-center">
         
@@ -260,7 +304,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
                     <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
                 </svg>
-              <!--<i class='fas fa-store-alt' style='font-size:27px'></i>-->
+              <i class='fas fa-store-alt' style='font-size:27px'></i>
             </div>
             
             
@@ -295,7 +339,7 @@
         
             </div>
             
-          </div>
+          </div>-->
           @endif
           <script>
               $(function(){

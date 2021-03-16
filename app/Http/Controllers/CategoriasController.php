@@ -103,7 +103,7 @@ class CategoriasController extends Controller
             }))
             ->get();
 
-        //dd(compact("destacados","categorias"));
+        //dd(compact("destacados","categorias"));Grupodigital2021
 
         return view("loMasHot",compact("destacados","categorias"));
     }
