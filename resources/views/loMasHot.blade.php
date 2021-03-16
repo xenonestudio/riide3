@@ -12,7 +12,7 @@
         @include("slider-categorias")
     @endif
 
-    <div class="container dfdg">
+    <div class="container-fluid container-md">
         @if( $d->categoria != null )
         <h3 class="mt-3 d-flex align-items-center"> <img src="/img/fuego.svg" width="40" alt=""> {{ $d->categoria->categoria }}</h3>
         <div class="swiper-container">
