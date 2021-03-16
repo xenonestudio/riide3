@@ -31,7 +31,7 @@
 <!-- Swiper -->
 @include("slider-banner",[ "cartelera" => $cartelera ])
 
-<div class="container">
+<div class="container-fluid container-md">
 
     @foreach ($tiendas as $t)
         @if( count( $t->productos ) > 0 )

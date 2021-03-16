@@ -30,7 +30,7 @@
   </style>
 
 @if( count($producto) > 0 )
-<div class="container">
+<div class="container-fluid container-md">
   <div class="row pt-3">
     <div class="col-12 col-md-6 px-md-5">
       <div class="producto-imagen" style="background-image: url('/storage/{{ $producto[0]->imagen }}') ;background-position: center;background-size: cover;"></div>
