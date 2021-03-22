@@ -212,6 +212,7 @@
         </main>
         @if( !Route::is("splash") && !Route::is("lenguaje") && !Route::is("bienvenido") && !Route::is("login") && !Route::is("seleccione-tipo-usuario") && !Route::is("register") )
         
+        
         <div class="fixed-bottom d-flex justify-content-center" style="height: 40px ;">
             <div class="w-100 bg-white d-flex justify-content-center align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999999"  viewBox="0 0 16 16">
