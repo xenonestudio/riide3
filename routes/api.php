@@ -18,7 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+Route::post('register', 'UserController@register');
+Route::post('login', 'UserController@authenticate');
 
 
 Route::group(['middleware' => ['jwt.verify']], function() {
@@ -35,8 +36,11 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get("/promociones","Api\ApiController@promociones");
     Route::get("/search/{search}","Api\ApiController@search");
     //Route::post("/register","Api\ApiController@register");
-    Route::post('register', 'Api\ApiController@register');
-    Route::post('login', 'Api\ApiController@authenticate');
+    //Route::post('register', 'Api\ApiController@register');
+    //Route::post('login', 'Api\ApiController@authenticate');
 
-    Route::post('a', 'Api\ApiController@a');
+    //Route::post('a', 'Api\ApiController@a');
+
+    Route::post('register', 'Api\UserController@register');
+    Route::post('login', 'Api\UserController@authenticate');
 });
