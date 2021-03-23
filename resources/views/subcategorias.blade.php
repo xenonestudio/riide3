@@ -2,7 +2,8 @@
 
 @section('content')
 @include("slider-banner")
-<div class="container">
+<div class="w-100  px-1">
+    <!--<div class="container-fluid container-md">-->
     @include("button-categoria")
     @foreach ($categorias as $c)
         @if ( count( $c->productos ) > 0 )

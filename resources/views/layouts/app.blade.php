@@ -213,7 +213,7 @@
         @if( !Route::is("splash") && !Route::is("lenguaje") && !Route::is("bienvenido") && !Route::is("login") && !Route::is("seleccione-tipo-usuario") && !Route::is("register") )
         
         
-        <div class="fixed-bottom d-flex justify-content-center" style="height: 40px ;">
+        <div class="fixed-bottom d-flex justify-content-center d-flex d-md-none" style="height: 40px ;">
             <div class="w-100 bg-white d-flex justify-content-center align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999999"  viewBox="0 0 16 16">
                     <path d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
@@ -252,7 +252,7 @@
                 </a>
                 <!--<svg class="svg" height="30" width="100" color="white" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="white" fill-rule="evenodd"></path></svg>-->
             </div>
-            <div class="w-100 d-flex justify-content-center align-items-center bg-white" style="border-top-left-radius: 10px;">
+            <a href="/categorias" class="w-100 d-flex justify-content-center align-items-center bg-white" style="border-top-left-radius: 10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999999" class="bi bi-grid-fill" viewBox="0 0 16 16">
                     <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
                 </svg>
@@ -262,7 +262,7 @@
                     </svg>
                 </a>
                 <div class="text-center" style="font-size: 8px ;">Categorias</div>-->
-            </div>
+            </a>
             <div class="w-100 d-flex justify-content-center align-items-center bg-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999999" class="bi bi-list" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>

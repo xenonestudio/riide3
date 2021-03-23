@@ -30,7 +30,8 @@
   </style>
 
 @if( count($producto) > 0 )
-<div class="container-fluid container-md">
+<div class="w-100  px-1">
+  <!--<div class="container-fluid container-md">-->
   <div class="row pt-3">
     <div class="col-12 col-md-6 px-md-5">
       <div class="producto-imagen" style="background-image: url('/storage/{{ $producto[0]->imagen }}') ;background-position: center;background-size: cover;"></div>
@@ -102,7 +103,7 @@
     </div>
     <div class="w-100 mt-5 ">
       <h6>Detalles</h6>
-      <textarea class="w-100 border-0 outline-0" name="" id="" cols="30" rows="10"></textarea>
+      <textarea class="w-100 border-0 outline-0" name="" id="" cols="30" rows="5"></textarea>
     </div>
 
     <div class="w-100 d-flex mt-3">

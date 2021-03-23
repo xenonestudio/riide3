@@ -33,7 +33,8 @@
     $arrayStore = [];
 @endphp
 @include("slider-banner",[ "cartelera" => $cartelera ])
-<div class="container-fluid container-md">
+<div class="w-100  px-1">
+    <!--<div class="container-fluid container-md">-->
     <div class="swiper-container">
         <div class="swiper-wrapper">
             @foreach ($tiendas as $t)
