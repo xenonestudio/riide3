@@ -211,10 +211,10 @@
             @yield('content')
         </main>
         @if( !Route::is("splash") && !Route::is("lenguaje") && !Route::is("bienvenido") && !Route::is("login") && !Route::is("seleccione-tipo-usuario") && !Route::is("register") )
-        
+
         
         <div class="fixed-bottom d-flex justify-content-center d-flex d-md-none" style="height: 40px ;">
-            <div class="w-100 bg-white d-flex justify-content-center align-items-center">
+            <a href="/promociones" class="w-100 bg-white d-flex justify-content-center align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999999"  viewBox="0 0 16 16">
                     <path d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
                 </svg>
@@ -224,7 +224,7 @@
                     </svg>
                 </a>
                 <div class="text-center" style="font-size: 8px ;">Promociones</div>-->
-            </div>
+            </a>
             <div class="w-100 d-flex d-flex justify-content-center align-items-center bg-white" style="border-top-right-radius: 10px;">
                 <svg version="1.1" width="22" height="22" fill="#999999" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.341 469.341"><g><g><g><path d="M437.337,384.007H362.67c-47.052,0-85.333-38.281-85.333-85.333c0-47.052,38.281-85.333,85.333-85.333h74.667
                     c5.896,0,10.667-4.771,10.667-10.667v-32c0-22.368-17.35-40.559-39.271-42.323l-61.26-107
