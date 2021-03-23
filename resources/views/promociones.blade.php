@@ -39,9 +39,10 @@
             <div class="col-12">
                 <div class="w-100 d-flex">
                     <div class="text-primary d-flex justify-content-center align-items-center px-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-percent" viewBox="0 0 16 16">
+                        <img src="/img/promociones.svg" width="30" alt="">
+                        <!--<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-percent" viewBox="0 0 16 16">
                             <path d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-                          </svg>
+                          </svg>-->
                     </div>
                     <div>
                         <img src="/storage/{{$t->imagen}}" width="60" height="60" alt="">
