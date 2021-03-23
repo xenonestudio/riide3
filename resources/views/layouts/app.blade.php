@@ -264,9 +264,10 @@
                 <div class="text-center" style="font-size: 8px ;">Categorias</div>-->
             </a>
             <div class="w-100 d-flex justify-content-center align-items-center bg-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999999" class="bi bi-list" viewBox="0 0 16 16">
+                <svg xmlns='http://www.w3.org/2000/svg' width="25" height="25" fill="#999999" class='ionicon' viewBox='0 0 512 512'><path stroke='#999999' stroke-linecap='round' stroke-miterlimit='10' stroke-width='48' d='M88 152h336M88 256h336M88 360h336'/></svg>
+                <!--<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999999" class="bi bi-list" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                  </svg>
+                  </svg>-->
                 <!--<div class="w-100 h-100 d-flex justify-content-center align-items-center" style="font-size: 25px ;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
