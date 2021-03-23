@@ -18,7 +18,7 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 @foreach($d->categoria->productos as $p)
-                    <div class="swiper-slide producto-card mr-3" style="background: transparent">
+                    <div class="swiper-slide producto-card mr-1" style="background: transparent">
                         @include("components.producto",[ "p" => $p ])
                     </div>
                 @endforeach
