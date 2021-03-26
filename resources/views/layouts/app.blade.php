@@ -138,8 +138,8 @@
                 <div class="w-100 h-100 d-flex">
                     <a href="/categorias" class="w-100 text-center text-white">Categorias</a>
                     <a href="/promociones" class="w-100 text-center text-white">Promociones</a>
-                    <a href="/" class="w-100 text-center text-white">Quiero ser un Riide</a>
-                    <a href="/" class="w-100 text-center text-white">Guia de uso</a>
+                    <a href="#" class="w-100 text-center text-white">¿Quieres hacer dinero?</a>
+                    <a href="#" class="w-100 text-center text-white">Guia de uso</a>
                 </div>
             </div>
             <div class="d-flex">

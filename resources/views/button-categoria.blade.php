@@ -23,13 +23,28 @@
       align-items: center;
     }
     
+
+    .category_open{
+      background: #f2f2f20d !important;
+      border: #1dbecd !important;
+      border-style: solid !important;
+      border-width: 2px !important;
+      color: #1dbecd !important;
+    }
+
   </style>
+
     <!-- Swiper -->
     <div class="swiper-container">
       <div class="swiper-wrapper">
         @foreach ($categorias as $c)
         <div class="swiper-slide m-1" style="background: transparent  ;width: auto;">
+          @if ($InCategory == $c->id)
+            <a href="/categorias/{{$c->id}}" type="button" class="btn btn-primary category_open btn-sm mt-2">{{ $c->categoria }}</a>
+          @else
             <a href="/categorias/{{$c->id}}" type="button" class="btn btn-primary btn-sm mt-2">{{ $c->categoria }}</a>
+          @endif
+          
         </div>
         @endforeach
       </div>
@@ -53,3 +68,4 @@
 <!--@foreach ($categorias as $c)
     <button type="button" class="btn btn-primary btn-sm mt-2">{{ $c->categoria }}</button>
 @endforeach-->
+
