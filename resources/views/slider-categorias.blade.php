@@ -32,7 +32,7 @@
     <div class="w-100 px-1">
       <!--<div class="container-fluid container-md">-->
       <div class="swiper-container">
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper vertical-scrolling-category">
             @foreach ($categorias as $c)
             <div class="swiper-slide card-store mr-3" style="background: transparent">
               <a href="/categorias/{{ $c->id }}" class="card w-100 mt-2 p-2 ml-2" style="text-decoration: none">

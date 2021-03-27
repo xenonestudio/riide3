@@ -4,6 +4,8 @@
 @php
     $cont = 0;
 @endphp
+<div class="container-app">
+
 @foreach ($destacados as $d)
     @if( $d->cartelera != null )
         @include("slider-banner",[ "cartelera" => [$d->cartelera] ])
@@ -16,9 +18,9 @@
         @if( $d->categoria != null )
         <h3 class="mt-3 d-flex align-items-center"> <img src="/img/fuego.svg" width="40" alt=""> {{ $d->categoria->categoria }}</h3>
         <div class="swiper-container">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper vertical-scrolling-pad">
                 @foreach($d->categoria->productos as $p)
-                    <div class="swiper-slide producto-card mr-1" style="background: transparent">
+                    <div class="swiper-slide producto-card mr-1 item-margin" style="background: transparent">
                         @include("components.producto",[ "p" => $p ])
                     </div>
                 @endforeach
@@ -33,6 +35,8 @@
         $cont++;
     @endphp
 @endforeach
+
+</div>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script>

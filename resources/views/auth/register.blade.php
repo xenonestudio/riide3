@@ -107,7 +107,7 @@
                     <label for="type_doc" class="mb-1" style="">Tipo de documento</label>
                     <div class="input-group mb-3">             
                         <div class="input-group-prepend">
-                            <select name="type_document" style="width: 40px !important ;" id="type_document">
+                            <select class="input-selected-s" name="type_document" style="width: 40px !important ;" id="type_document">
                                 <option value="J">J</option>
                                 <option value="V">V</option>
                                 <option value="E">E</option>
@@ -215,7 +215,7 @@
                     <label for="type_doc" class="" style="">Tipo de documento</label>
                     <div class="input-group mb-3">             
                         <div class="input-group-prepend">
-                            <select name="type_document" style="width: 40px !important ;" id="type_document">
+                            <select class="input-selected-s" name="type_document" style="width: 40px !important ;" id="type_document">
                                 <option value="J">J</option>
                                 <option value="V">V</option>
                                 <option value="E">E</option>
@@ -315,6 +315,7 @@
                         <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
                       </svg>Licencia de conducir</label>
                     <input type="file" id="lc" name="lc" style="display: none ;">
+                    <img src="" class="noview" width="150px" height="120px" id="imagenmuestra">
                 </div>
                 <div class="col-md-3 mt-3">
                     <label for="cm" style="">
@@ -347,8 +348,29 @@ $(function(){
     $("input[name=role_id]").val( localStorage.getItem("role_id") );
     $("#form-" + localStorage.getItem("role_id") ).css("display","flex");
     //console.log($("input[name=role_id]"))
-    
-})
+
+
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+            // Asignamos el atributo src a la tag de imagen
+            $('#imagenmuestra').attr('src', e.target.result);
+            }
+            $('#imagenmuestra').removeClass("noview")
+            reader.readAsDataURL(input.files[0]);
+        }else{
+            $('#imagenmuestra').addClass("noview")
+        }
+        }
+
+        // El listener va asignado al input
+        $("#lc").change(function() {
+        readURL(this);
+        
+        });
+            
+        })
 </script>
 
 @endsection

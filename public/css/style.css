@@ -1,3 +1,60 @@
-.title-ground{
-    background: linear-gradient(0deg, rgb(0 0 0 / 85%) 0%, rgb(0 0 0 / 78%) 25%, rgba(255,255,255,0) 84%);
+.title-ground {
+    background: linear-gradient(0deg, rgb(0 0 0 / 88%) 0%, rgb(0 0 0 / 80%) 23%, rgba(255,255,255,0) 100%);
+    height: 80px;
+    padding-top: 15px;
 }
+
+
+.item-margin{
+    margin-right: 24px !important;
+}
+
+
+.container-app{
+}
+
+.vertical-scrolling-pad{
+    padding-left: 20px !important;
+}
+
+.vertical-scrolling-category{
+    padding-left: 10px !important;
+}
+
+.input-number{
+    border-color: #1dbecd;
+    border-style: solid;
+    border-radius: 4px;
+    border-width: 1px;
+}
+
+.input-selected-s{
+    
+    width: 40px !important;
+    border: #ced4da !important;
+    border-style: solid !important;
+    border-radius: 5px 0px 0px 5px !important;
+    border-width: 1px !important;
+    padding-left: 4px;
+
+}
+
+.input-selected-s:focus-visible{
+    border: #ced4da !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-radius: 5px 0px 0px 5px !important; 
+    outline: -webkit-focus-ring-color auto 0px;
+}
+
+.noview{
+    display: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
