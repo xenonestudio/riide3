@@ -14,11 +14,14 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::post('register', 'UserController@register');
+
+
 Route::post('login', 'UserController@authenticate');
 
 
@@ -38,7 +41,8 @@ Route::group(['middleware' => ['cors']], function () {
     //Route::post("/register","Api\ApiController@register");
     //Route::post('register', 'Api\ApiController@register');
     //Route::post('login', 'Api\ApiController@authenticate');
-
+    Route::get('/validateDni', 'Auth\RegisterController@DniValidate');
+    Route::post('/validateEmail', 'Auth\RegisterController@EmailValidate');
     //Route::post('a', 'Api\ApiController@a');
 
     Route::post('register', 'Api\UserController@register');

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Tienda;
+use Illuminate\Http\Request;
 use App\Calificacione;
 
 class RegisterController extends Controller
@@ -187,5 +188,39 @@ class RegisterController extends Controller
         
         
         return $user;
+    }
+
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    public function DniValidate(Request $request)
+    {
+        
+    }
+
+     /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    public function EmailValidate(Request $request)
+    {
+        if ($request->has('email')) {
+
+            $find = User::where('email', $request->email)->first();
+            if ($find) {
+               return 1;
+            }else{
+                return 0;
+            }
+            
+        }else{
+            return response(['error' => 'Email no found'],500);
+        }
     }
 }

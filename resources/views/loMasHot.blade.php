@@ -16,7 +16,10 @@
     <div class="w-100 px-1">
     <!--<div class="container-fluid container-md">-->
         @if( $d->categoria != null )
-        <h3 class="mt-3 d-flex align-items-center"> <img src="/img/fuego.svg" width="40" alt=""> {{ $d->categoria->categoria }}</h3>
+        <div class="seccion_title">
+            <h3 class="mt-3 d-flex align-items-center"> <img src="/img/fuego.svg" width="40" alt=""> {{ $d->categoria->categoria }}</h3>
+        </div>
+        
         <div class="swiper-container">
             <div class="swiper-wrapper vertical-scrolling-pad">
                 @foreach($d->categoria->productos as $p)
