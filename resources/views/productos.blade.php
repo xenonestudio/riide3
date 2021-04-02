@@ -53,7 +53,7 @@
           <div>
               <p style="font-size: 22px ;" class="mb-0 px-3">
                 @if( $producto[0]->precio_b != null )
-                <b style="color: #e0e0e0  ;"> <s>${{ $producto[0]->precio_a }}</s> </b> <br>
+                <b style="color: #a5a5a5  ;"> <s>${{ $producto[0]->precio_a }}</s> </b> <br>
                 @else
                 <b>${{ $producto[0]->precio_a }}</b> <br>
                 @endif
@@ -66,40 +66,46 @@
           </div>
         </div>
 
-        <div class="w-100">
-          <h3>Descripcion</h3>
-          <p class="text-grey">{{ $producto[0]->descripcion }}</p>
+
+        <div class="product_description_section">
+          <div class="w-100">
+            <h3>Descripcion</h3>
+            <p class="text-grey">{{ $producto[0]->descripcion }}</p>
+          </div>
+  
+          <div class="w-100 buttons_to_add" style="height: 30px ;">
+            <button class="btn btn-primary btn-sm mr-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+            </svg>
+            </button>
+            <input class="input-number" style="width: 35px ;" type="number">
+            <button class="btn btn-primary btn-sm ml-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+              </svg>
+            </button>
+          </div>
         </div>
 
-        <div class="w-100 d-flex flex-row flex-md-column-reverse">
-          <div class="w-100 d-flex justify-content-center">
+
+        <div class="container_total_price">
+          <div class="container_total_price_card">
               <div class="card shadow">
                   <div class="card-body">
-                    <p class="card-text text-center">
+                    <p class="card-text">
                         Sub-total <br> 
                         @if( $producto[0]->precio_b != null )
-                          <b style="font-size:30px;">${{ $producto[0]->precio_b }}</b>
+                          <b>${{ $producto[0]->precio_b }}</b>
                         @else
-                          <b style="font-size:30px;">${{ $producto[0]->precio_a }}</b>
+                          <b>${{ $producto[0]->precio_a }}</b>
                         @endif
                     </p>
                   </div>
                 </div>
           </div>
           
-          <div class="w-100 d-flex justify-content-end mb-3" style="height: 30px ;">
-                  <button class="btn btn-primary btn-sm mr-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                      <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                  </svg>
-                  </button>
-                  <input class="input-number" style="width: 35px ;" type="number">
-                  <button class="btn btn-primary btn-sm ml-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>
-                  </button>
-          </div>
+          
     </div>
     <div class="w-100 mt-5 ">
       <h6>Detalles</h6>
@@ -125,23 +131,32 @@
 
   </div>
   <div class="col-12">
-    <h3 class="mt-3">Productos relacionados</h3>
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        @if( $producto[0]->tienda != null )
-          @if( count( $producto[0]->tienda->productos ) > 0 )
-            @foreach ($producto[0]->tienda->productos as $p)
-              @if( $producto[0]->id != $p->id )
-                <div class="swiper-slide producto-card mr-3" style="background: transparent">
-                  @include("components.producto")
-                </div>
-              @endif
-            @endforeach
+
+    <div class="related_products">
+
+      <span class="dividing_line"></span>
+
+      <h3 class="mt-3">Productos relacionados</h3>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          @if( $producto[0]->tienda != null )
+            @if( count( $producto[0]->tienda->productos ) > 0 )
+              @foreach ($producto[0]->tienda->productos as $p)
+                @if( $producto[0]->id != $p->id )
+                  <div class="swiper-slide producto-card mr-3" style="background: transparent">
+                    @include("components.producto")
+                  </div>
+                @endif
+              @endforeach
+            @endif
           @endif
-        @endif
-      </div>
-      <div class="swiper-pagination"></div>
-    </div> 
+        </div>
+        <div class="swiper-pagination"></div>
+      </div> 
+
+  </div>
+
+
 </div>
 </div>
 @else
